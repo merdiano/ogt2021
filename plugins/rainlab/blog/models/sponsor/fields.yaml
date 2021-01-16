@@ -1,0 +1,44 @@
+fields:
+    organization:
+        label: 'rainlab.blog::lang.organization'
+        span: auto
+        type: text
+    site:
+        label: 'rainlab.blog::lang.site'
+        span: auto
+        type: text
+    order:
+        label: Number
+        span: auto
+        type: number
+    category_id:
+        label: 'rainlab.blog::lang.event'
+        showSearch: true
+        span: auto
+        required: 1
+        type: dropdown
+    type:
+        label: 'Balloon Selector'
+        options:
+            1: 'official partner'
+            2: 'media partner'
+            3: 'premier partner'
+            4: 'event sponsor'
+            5: 'golden sponsor'
+            6: 'silver sponsor'
+            7: 'bronze sponsor'
+            8: 'platinum sponsor'
+        span: auto
+        type: balloon-selector
+    logo:
+        label: 'File upload'
+        mode: file
+        imageWidth: '200'
+        imageHeight: '200'
+        fileTypes: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

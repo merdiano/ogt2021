@@ -1,0 +1,10 @@
+name: Sponsors
+form: $/rainlab/blog/models/sponsor/fields.yaml
+modelClass: RainLab\Blog\Models\Sponsor
+defaultRedirect: rainlab/blog/sponsors
+create:
+    redirect: 'rainlab/blog/sponsors/update/:id'
+    redirectClose: rainlab/blog/sponsors
+update:
+    redirect: rainlab/blog/sponsors
+    redirectClose: rainlab/blog/sponsors

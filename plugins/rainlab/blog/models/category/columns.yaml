@@ -1,0 +1,21 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    name:
+        label: rainlab.blog::lang.category.name
+        searchable: true
+
+    post_count:
+        label: rainlab.blog::lang.category.posts
+        sortable: false
+
+    sponsor_count:
+        label: sponsors
+        sortable: false
+
+    spiker_count:
+        label: spikers
+        sortable: false

@@ -1,0 +1,10 @@
+name: Spikers
+modelClass: RainLab\Blog\Models\Spiker
+form: $/rainlab/blog/models/spiker/fields.yaml
+defaultRedirect: rainlab/blog/spikers
+create:
+    redirect: 'rainlab/blog/spikers/update/:id'
+    redirectClose: rainlab/blog/spikers
+update:
+    redirect: rainlab/blog/spikers
+    redirectClose: rainlab/blog/spikers

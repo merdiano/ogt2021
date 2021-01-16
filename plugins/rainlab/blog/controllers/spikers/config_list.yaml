@@ -1,0 +1,12 @@
+title: Spikers
+modelClass: RainLab\Blog\Models\Spiker
+list: $/rainlab/blog/models/spiker/columns.yaml
+recordUrl: 'rainlab/blog/spikers/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 25
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

@@ -1,0 +1,28 @@
+columns:
+    id:
+        label: id
+        type: number
+        sortable: true
+    organization:
+        label: organization
+        type: text
+        searchable: true
+        sortable: true
+    site:
+        label: site
+        type: text
+    order:
+        label: order
+        type: number
+        sortable: true
+    type:
+        label: type
+        type: text
+        sortable: true
+    category_id:
+        label: category_id
+        type: text
+        searchable: true
+        sortable: true
+        select: name
+        relation: category

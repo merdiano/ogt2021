@@ -1,0 +1,5 @@
+title: Spikers
+modelClass: RainLab\Blog\Models\Spiker
+nameFrom: order
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,27 @@
+columns:
+    id:
+        label: ID
+        type: number
+        sortable: true
+    name:
+        label: 'rainlab.blog::lang.name'
+        type: text
+        searchable: true
+        sortable: true
+    title:
+        label: 'rainlab.blog::lang.title'
+        type: text
+        searchable: true
+    date:
+        label: 'rainlab.blog::lang.date'
+        type: text
+    time:
+        label: 'rainlab.blog::lang.time_minute'
+        type: text
+    category_id:
+        label: 'rainlab.blog::lang.event'
+        type: text
+        searchable: true
+        sortable: true
+        select: name
+        relation: category

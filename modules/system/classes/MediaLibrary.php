@@ -291,10 +291,6 @@ class MediaLibrary
             if (Str::startsWith($folder, $exclude)) {
                 continue;
             }
-            if (!$this->isVisible($folder)) {
-                $exclude[] = $folder . '/';
-                continue;
-            }
 
             $result[] = $folder;
         }

@@ -1,0 +1,6 @@
+plugin:
+    name: 'tps.ogt::lang.plugin.name'
+    description: 'tps.ogt::lang.plugin.description'
+    author: tps
+    icon: oc-icon-lightbulb-o
+    homepage: ''

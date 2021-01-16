@@ -1,0 +1,65 @@
+fields:
+    order:
+        label: 'rainlab.blog::lang.order'
+        span: auto
+        type: number
+    category_id:
+        label: Event
+        showSearch: true
+        span: auto
+        required: 1
+        type: dropdown
+tabs:
+    fields:
+        name:
+            label: 'rainlab.blog::lang.name'
+            span: left
+            required: 1
+            type: text
+            tab: General
+        title:
+            label: 'rainlab.blog::lang.title'
+            span: right
+            required: 1
+            type: text
+            tab: General
+        bg_white:
+            label: 'rainlab.blog::lang.bg_white'
+            mode: image
+            span: auto
+            type: mediafinder
+            tab: General
+        bg_blue:
+            label: 'rainlab.blog::lang.bg_blue_image'
+            mode: image
+            span: auto
+            type: mediafinder
+            tab: General
+        content:
+            label: 'rainlab.blog::lang.content'
+            size: ''
+            span: full
+            required: 1
+            type: textarea
+            tab: General
+        topic:
+            label: 'rainlab.blog::lang.topic'
+            span: left
+            type: text
+            tab: 'rainlab.blog::lang.auditon'
+        session:
+            label: 'rainlab.blog::lang.session'
+            span: right
+            type: text
+            tab: 'rainlab.blog::lang.auditon'
+        date:
+            label: 'rainlab.blog::lang.date'
+            mode: datetime
+            span: auto
+            type: datepicker
+            tab: 'rainlab.blog::lang.auditon'
+        time:
+            label: 'rainlab.blog::lang.time'
+            span: auto
+            type: text
+            tab: 'rainlab.blog::lang.auditon'

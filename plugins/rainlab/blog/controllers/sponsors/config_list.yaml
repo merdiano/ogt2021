@@ -1,0 +1,12 @@
+list: $/rainlab/blog/models/sponsor/columns.yaml
+modelClass: RainLab\Blog\Models\Sponsor
+title: Sponsors
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'rainlab/blog/sponsors/update/:id'
