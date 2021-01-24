@@ -1,0 +1,21 @@
+description = "main layout"
+
+[localePicker]
+forceUrl = 1
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<!DOCTYPE html>
+<html lang="{{activeLocale}}">
+{% partial 'head' %}
+<body>
+{% partial 'header'%}
+
+
+    {% page %}
+
+{% partial 'footer' %}
+</body>
+</html>

@@ -1,0 +1,162 @@
+title = "Contact us"
+url = "/contact-us"
+layout = "main"
+is_hidden = 0
+
+[JanVince\SmallContactForm\Components\SmallContactForm contactForm]
+disable_fields = "organization|phone"
+
+[ogtEvent]
+slug = "ogt-2021"
+eventPage = "event"
+==
+<?php
+function onStart(){
+    //$this->page->components['contactForm']->setProperty('send_btn_label', 'blaa');
+}
+?>
+==
+<!-- conf start
+========================================== -->
+{% set send = 'bayba'%}
+<div class="locate__row">
+    <div class="locate__column">
+        <div class="locate__title">
+            {{'contact.venue'|_}}
+        </div>
+        <p class="para">
+            {{event.address}}
+        </p>
+        <div class="locate__row-sm">
+            <div class="icon__outer">
+                <i class="icon-mail"></i>
+            </div>
+            <div class="info">
+                <div class="label">
+                    {{'contact.email'|_}}
+                </div>
+                <div class="label__text">
+                    <a href="#">
+                        {{this.theme.eMail}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="locate__row-sm">
+            <div class="icon__outer">
+                <i class="icon-world"></i>
+            </div>
+            <div class="info">
+                <div class="label">
+                    {{'contact.site'|_}}
+                </div>
+                <div class="label__text">
+                    <a href="#">
+                        {{'www.cci.gov.tm'|_}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="locate__row-sm">
+            <div class="icon__outer">
+                <i class="icon-phone"></i>
+            </div>
+            <div class="info">
+                <div class="label">
+                    {{'contact.phone'}}
+                </div>
+                <div class="label__text">
+                    <a href="#">
+                        {{this.theme.phone}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="scf-message-contactForm">
+
+    </div>
+
+    {% if formSentAlias == contactForm.alias and formError is empty and settingsGet('form_hide_after_success', 0) %}
+
+    {# no errors and set to hide after send #}
+
+    {% else %}
+
+    {{ form_open(contactForm.getFormAttributes) }}
+
+    {% for field in contactForm.fields %}
+
+    {{ contactForm.getFieldHtmlCode(field)|raw }}
+
+    {% endfor %}
+
+    {{ contactForm.getAntispamFieldHtmlCode({})|raw }}
+
+    {{ contactForm.getDescriptionFieldHtmlCode({})|raw }}
+
+    {{ contactForm.getRedirectFieldHtmlCode({})|raw }}
+
+    {% if (settingsGet('google_recaptcha_version') is null or settingsGet('google_recaptcha_version') == 'v2checkbox') and settingsGet('add_google_recaptcha') and settingsGet('google_recaptcha_site_key') %}
+
+    <div class="{{contactForm.getReCaptchaWrapperClass()}}">
+
+        <div class="g-recaptcha" data-sitekey="{{ settingsGet('google_recaptcha_site_key') }}"></div>
+
+    </div>
+
+    {% endif %}
+
+    {{ contactForm.getSubmitButtonHtmlCode({})|raw }}
+
+    {{ form_close() }}
+
+    {% if settingsGet('add_google_recaptcha') and settingsGet('google_recaptcha_scripts_allow') %}
+
+    <script src='https://www.google.com/recaptcha/api.js{{ settingsGet("google_recaptcha_locale_allow") and currentLocale ? ("?hl="~currentLocale) }}' async defer></script>
+
+    {% if settingsGet('google_recaptcha_version') == 'v2invisible' %}
+
+    <script>
+
+        function onSubmit_{{ contactForm.alias }}(token) {
+
+            return new Promise(function(resolve, reject) {
+
+                //Your code logic goes here
+
+                document.getElementById("{{'scf-form-id-'~contactForm.alias}}").submit();
+                resolve();
+
+            }); //end promise
+        }
+
+    </script>
+
+    {% endif %}
+
+    {% endif %}
+
+    {% endif %}
+
+    <!--    <form class="register__form">-->
+
+<!--        <div class="input__outer">-->
+<!--            <input type="name" placeholder="Имя и Фамилия *" required>-->
+<!--        </div>-->
+<!--        <div class="input__outer">-->
+<!--            <input type="email" placeholder="Электронный адрес *" required>-->
+<!--        </div>-->
+<!--        <div class="input__outer">-->
+<!--            <input type="text" placeholder="Тема * required">-->
+<!--        </div>-->
+<!--        <div class="text__outer">-->
+<!--            <textarea name="" id="" cols="30" rows="10" placeholder="Сообщение"></textarea>-->
+<!--        </div>-->
+<!--        <button type="submit" class="register__btn">-->
+<!--            Отправить-->
+<!--        </button>-->
+<!--    </form>-->
+</div>
+<!-- conf start
+========================================== -->

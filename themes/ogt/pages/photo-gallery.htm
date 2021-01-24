@@ -1,4 +1,54 @@
 title = "Photo gallery"
 url = "/photo-gallery"
+layout = "main"
 is_hidden = 0
 ==
+<?php
+function onStart() {
+    $gallery_folder = '/gallery/';
+    $mediaLib = \System\Classes\MediaLibrary::instance();
+    // it will return us MediaLibraryItem instance
+    $folders = $mediaLib->listFolderContents($gallery_folder);
+    $galleries = [];
+    foreach($folders as $folder){
+        $title= str_replace($gallery_folder,'',$folder->path);
+        $images = $mediaLib->listFolderContents($folder->path,false,'image',true);
+        $galleries[] = array('title'=>$title,'avatar'=>$images[0],'images'=>$images);
+    }
+    $this['galleries'] = $galleries;
+}
+?>
+==
+{% put styles %}
+<link rel="stylesheet" href="{{'assets/css/lightgallery.min.css'|theme}}">
+{% endput %}
+<div class="gellery__row">
+    {% for item in galleries %}
+    <div class="gallery__row-column">
+        <div class="image__outer gallery" >
+<!--            <img src="{{item.avatar.path|media|resize(365,287)}}" alt="{{item.name}}" class="slector" data-src="{{ image.path|media }}">-->
+            {% for image in item.images%}
+            <div class="slector"  {% if loop.first!=true %} style="display: none" {% endif %} data-src="{{ image.path|media }}" data-sub-html="<h4>{{ image.title }}</h4><p>{{ image.description }}</p>">
+                <img src="{{image.path|media|resize(365,287)}}" alt="{{ image.title }}">
+            </div>
+
+            {% endfor %}
+        </div>
+        <p class="para">
+        {{item.title}}
+        </p>
+
+    </div>
+    {% endfor %}
+</div>
+{% put scripts %}
+<script src="{{'assets/js/lightgallery.min.js'|theme}}"></script>
+<script src="{{'assets/js/jquery.mousewheel.min.js'|theme}}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".gallery").lightGallery({
+            selector: '.slector'
+        });
+    });
+</script>
+{% endput %}

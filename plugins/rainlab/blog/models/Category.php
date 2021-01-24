@@ -31,6 +31,7 @@ class Category extends Model
     public $translatable = [
         'name',
         'description',
+        'address',
         ['slug', 'index' => true]
     ];
 
@@ -52,7 +53,8 @@ class Category extends Model
     ];
 
     public $attachOne = [
-        'banner' => 'System\Models\File'
+//        'banner' => 'System\Models\File',
+        'place' => 'System\Models\File',
     ];
 
     public function beforeValidate()

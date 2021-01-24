@@ -195,6 +195,7 @@ return [
       'send_btn_wrapper_css' => 'Send button wrapper CSS class',
       'send_btn_wrapper_css_placeholder' => 'form-group',
 
+
     ],
 
     'redirect' => [
@@ -273,7 +274,7 @@ return [
       'custom_code_comment' => 'This code will override built in field code. Use carefully!',
       'custom_code_twig' => 'Allow Twig',
       'custom_code_twig_comment' => 'If checked, Twig markup will be parsed.',
-      
+
       'custom_content' => 'Custom content',
       'custom_content_comment' => 'This content will be added to field.',
     ],
@@ -370,7 +371,7 @@ return [
 
       'google_recaptcha_version' => 'Google reCaptcha version',
       'google_recaptcha_version_comment' => 'Choose a version of reCaptcha widget.<br>More info on <a href="https://developers.google.com/recaptcha/docs/versions" target="_blank">Google reCaptcha site</a>.',
-      
+
       'google_recaptcha_versions' => [
         'v2checkbox' => 'reCaptcha V2 checkbox',
         'v2invisible' => 'reCaptcha V2 invisible',

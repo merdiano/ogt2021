@@ -8,7 +8,7 @@ fields:
         span: auto
         type: text
     order:
-        label: Number
+        label: Order
         span: auto
         type: number
     category_id:
@@ -18,27 +18,20 @@ fields:
         required: 1
         type: dropdown
     type:
-        label: 'Balloon Selector'
+        label: Type
         options:
             1: 'official partner'
             2: 'media partner'
             3: 'premier partner'
             4: 'event sponsor'
-            5: 'golden sponsor'
-            6: 'silver sponsor'
-            7: 'bronze sponsor'
-            8: 'platinum sponsor'
+            5: 'platinum sponsor'
+            6: 'golden sponsor'
+            7: 'silver sponsor'
+            8: 'bronze sponsor'
         span: auto
         type: balloon-selector
     logo:
-        label: 'File upload'
-        mode: file
-        imageWidth: '200'
-        imageHeight: '200'
-        fileTypes: image
-        useCaption: true
-        thumbOptions:
-            mode: crop
-            extension: auto
+        label: 'Logo (180x134)'
+        mode: image
         span: auto
-        type: fileupload
+        type: mediafinder

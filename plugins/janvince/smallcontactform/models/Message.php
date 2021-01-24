@@ -54,61 +54,60 @@ class Message extends Model
     }
 
 
-    public function storeFormData($data, $formAlias, $formDescription){
+    public function storeFormData($data, $formAlias, $formDescription)
+    {
 
-        if(Settings::getTranslated('privacy_disable_messages_saving')) {
+        if (Settings::getTranslated('privacy_disable_messages_saving')) {
             return;
         }
 
         $output = [];
-        $name_field_value = NULL;
-        $email_field_value = NULL;
-        $message_field_value = NULL;
+        $name_field_value = null;
+        $email_field_value = null;
+        $message_field_value = null;
 
         $formFields = Settings::getTranslated('form_fields');
 
-        foreach($data as $key => $value) {
-
+        foreach ($data as $key => $value) {
             // skip helpers
-            if(substr($key, 0, 1) == '_'){
+            if (substr($key, 0, 1) == '_') {
                 continue;
             }
 
             // skip reCaptcha
-            if($key == 'g-recaptcha-response'){
+            if ($key == 'g-recaptcha-response') {
                 continue;
             }
 
             // skip non-defined fields
             $fieldDefined = null;
-            foreach( $formFields as $field) {
-                if( $field['name'] == $key) {
+            foreach ( $formFields as $field) {
+                if ( $field['name'] == $key) {
                     $fieldDefined = true;
                 }
             }
 
-            if( !$fieldDefined ) {
-                Log::warning('SMALL CONTACT FORM WARNING: Found a non-defined field in sent data! Field name: ' . e($key) . ' and value: ' . e($value['value']) );
+            if ( !$fieldDefined) {
+                Log::warning('SMALL CONTACT FORM WARNING: Found a non-defined field in sent data! Field name: ' . e($key) . ' and value: ' . e($value['value']));
                 continue;
             }
 
             $output[$key] = e($value['value']);
 
             // if email field is assigned in autoreply, save it separatelly
-            if(empty($email_field_value) and $key == Settings::getTranslated('autoreply_email_field')){
+            if (empty($email_field_value) and $key == Settings::getTranslated('autoreply_email_field')) {
                 $email_field_value = e($value['value']);
             }
 
             // if name field is assigned in autoreply, save it separatelly
-            if(empty($name_field_value) and $key == Settings::getTranslated('autoreply_name_field')){
+            if (empty($name_field_value) and $key == Settings::getTranslated('autoreply_name_field')) {
                 $name_field_value = e($value['value']);
             }
 
             // if message is assigned in autoreply, save it separatelly
-            if(empty($message_field_value) and $key == Settings::getTranslated('autoreply_message_field')){
+            if (empty($message_field_value) and $key == Settings::getTranslated('autoreply_message_field')) {
                 $message_field_value = e($value['value']);
             }
-
         }
 
         $this->form_data = $output;
@@ -120,15 +119,15 @@ class Message extends Model
         $this->form_description = $formDescription;
         $this->url = url()->full();
         $this->save();
-
     }
 
     /**
      * Build and send autoreply message
      */
-    public function sendAutoreplyEmail($postData, $componentProperties = [], $formAlias, $formDescription){
+    public function sendAutoreplyEmail($postData, $componentProperties = [], $formAlias, $formDescription)
+    {
 
-        if(!Settings::getTranslated('allow_autoreply')) {
+        if (!Settings::getTranslated('allow_autoreply')) {
             return;
         }
 
@@ -136,30 +135,30 @@ class Message extends Model
             return;
         }
 
-        if(!Settings::getTranslated('autoreply_email_field')) {
+        if (!Settings::getTranslated('autoreply_email_field')) {
             Log::error('SMALL CONTACT FORM ERROR: Contact form data have no email to send autoreply message!');
             return;
         }
 
         /**
-        *	Extract and test email field value
-        */        
+        *   Extract and test email field value
+        */
         $sendTo = '';
 
-        foreach($postData as $key => $field) {
-            if($key == Settings::getTranslated('autoreply_email_field')){
+        foreach ($postData as $key => $field) {
+            if ($key == Settings::getTranslated('autoreply_email_field')) {
                 $sendTo = $field['value'];
             }
         }
 
         $validator = Validator::make(['email' => $sendTo], ['email' => 'required|email']);
 
-        if($validator->fails()){
-            Log::error('SMALL CONTACT FORM ERROR: Email to send autoreply is not valid!' . PHP_EOL . ' Data: '. json_encode($postData) );
+        if ($validator->fails()) {
+            Log::error('SMALL CONTACT FORM ERROR: Email to send autoreply is not valid!' . PHP_EOL . ' Data: '. json_encode($postData));
             return;
         }
 
-        if( Settings::getTranslated('allow_email_queue') ){
+        if ( Settings::getTranslated('allow_email_queue')) {
             $method = 'queue';
         } else {
             $method = 'send';
@@ -169,22 +168,20 @@ class Message extends Model
         $outputFull = [];
         $formFields = Settings::getTranslated('form_fields');
 
-        foreach($formFields as $field) {
-
+        foreach ($formFields as $field) {
             $fieldValue = null;
 
-            if( !empty( $postData[ $field['name'] ]['value'] ) ) {
-                $fieldValue = e( html_entity_decode( $postData[ $field['name'] ]['value']  ) );
+            if ( !empty($postData[ $field['name'] ]['value'])) {
+                $fieldValue = e(html_entity_decode($postData[ $field['name'] ]['value']));
             } else {
                 $fieldValue = null;
             }
 
-            if( !empty( $field['name'] ) ) {
-                $outputFull[ $field['name'] ] = array_merge( $field, [ 'value' => $fieldValue ] );
+            if ( !empty($field['name'])) {
+                $outputFull[ $field['name'] ] = array_merge($field, [ 'value' => $fieldValue ]);
             }
 
             $output[ $field['name'] ] = $fieldValue;
-
         }
 
         $output['form_description'] = $formDescription;
@@ -192,48 +189,44 @@ class Message extends Model
 
         $template = Settings::getTranslatedTemplates('en', App::getLocale(), 'autoreply');
 
-        if( Settings::getTranslated('email_template') ){
-
-            if(View::exists(Settings::getTranslated('email_template')) OR !empty( MailTemplate::listAllTemplates()[Settings::getTranslated('email_template')] ) ) {
+        if ( Settings::getTranslated('email_template')) {
+            if (View::exists(Settings::getTranslated('email_template')) or !empty(MailTemplate::listAllTemplates()[Settings::getTranslated('email_template')])) {
                 $template = Settings::getTranslated('email_template');
             } else {
                 Log::error('SMALL CONTACT FORM: Missing defined email template: ' . Settings::getTranslated('email_template') . '. Default template will be used!');
             }
-
         }
 
         /**
          *  Override email template by component property
          *  Language specific template has priority (override non language specific)
          */
-        if ( !empty($componentProperties['autoreply_template']) and !empty( MailTemplate::listAllTemplates()[ $componentProperties['autoreply_template'] ] ) ) {
+        if ( !empty($componentProperties['autoreply_template']) and !empty(MailTemplate::listAllTemplates()[ $componentProperties['autoreply_template'] ])) {
             $template = $componentProperties['autoreply_template'];
-        } elseif ( !empty($componentProperties['autoreply_template']) and empty( MailTemplate::listAllTemplates()[ $componentProperties['autoreply_template'] ] ) ) {
+        } elseif ( !empty($componentProperties['autoreply_template']) and empty(MailTemplate::listAllTemplates()[ $componentProperties['autoreply_template'] ])) {
             Log::error('SMALL CONTACT FORM: Missing defined email template: ' . $componentProperties['autoreply_template'] . '. ' . $template . ' template will be used!');
         }
 
-        if ( !empty($componentProperties[ ('autoreply_template_'.App::getLocale())]) and !empty( MailTemplate::listAllTemplates()[ $componentProperties[ ('autoreply_template_'.App::getLocale())] ] ) ) {
+        if ( !empty($componentProperties[ ('autoreply_template_'.App::getLocale())]) and !empty(MailTemplate::listAllTemplates()[ $componentProperties[ ('autoreply_template_'.App::getLocale())] ])) {
             $template =  $componentProperties[('autoreply_template_'.App::getLocale())];
-        } elseif ( !empty($componentProperties[ ('autoreply_template_'.App::getLocale())]) and empty( MailTemplate::listAllTemplates()[ $componentProperties[ ('autoreply_template_'.App::getLocale())] ] ) ) {
+        } elseif ( !empty($componentProperties[ ('autoreply_template_'.App::getLocale())]) and empty(MailTemplate::listAllTemplates()[ $componentProperties[ ('autoreply_template_'.App::getLocale())] ])) {
             Log::error('SMALL CONTACT FORM: Missing defined email template: ' . $componentProperties[ ('autoreply_template_'.App::getLocale())] . '. ' . $template . ' template will be used!');
         }
 
-        Mail::{$method}($template, ['fields' => $output, 'fieldsDetails' => $outputFull, 'url' => url()->full()], function($message) use($sendTo, $componentProperties, $output){
+        Mail::{$method}($template, ['fields' => $output, 'fieldsDetails' => $outputFull, 'url' => url()->full()], function ($message) use ($sendTo, $componentProperties, $output) {
 
             $message->to($sendTo);
 
             if (!empty($componentProperties['autoreply_subject'])) {
-                $message->subject(Twig::parse($componentProperties['autoreply_subject'],['fields' => $output]));
+                $message->subject(Twig::parse($componentProperties['autoreply_subject'], ['fields' => $output]));
                 
                 \App::forgetInstance('parse.twig');
                 \App::forgetInstance('twig.environment');
-
             } elseif (Settings::getTranslated('email_subject')) {
                 $message->subject(Twig::parse(Settings::getTranslated('email_subject'), ['fields' => $output]));
 
                 \App::forgetInstance('parse.twig');
                 \App::forgetInstance('twig.environment');
-
             }
 
             /**
@@ -243,26 +236,26 @@ class Message extends Model
             $fromAddress = null;
             $fromAddressName = null;
 
-            if( Settings::getTranslated('email_address_from') ) {
+            if ( Settings::getTranslated('email_address_from')) {
                 $fromAddress = Settings::getTranslated('email_address_from');
                 $fromAddressName = Settings::getTranslated('email_address_from_name');
             }
 
-            if( !empty($componentProperties['autoreply_address_from']) ) {
+            if ( !empty($componentProperties['autoreply_address_from'])) {
                 $fromAddress = $componentProperties['autoreply_address_from'];
             }
 
-            if( !empty($componentProperties['autoreply_address_from_name']) ) {
+            if ( !empty($componentProperties['autoreply_address_from_name'])) {
                 $fromAddressName = $componentProperties['autoreply_address_from_name'];
             }
 
-            if( !empty($componentProperties[ ('autoreply_address_from_name_'.App::getLocale()) ]) ) {
+            if ( !empty($componentProperties[ ('autoreply_address_from_name_'.App::getLocale()) ])) {
                 $fromAddressName = $componentProperties[ ('autoreply_address_from_name_'.App::getLocale()) ];
             }
 
             $validator = Validator::make(['email' => $fromAddress], ['email' => 'required|email']);
 
-            if($validator->fails()){
+            if ($validator->fails()) {
                 Log::error('SMALL CONTACT FORM ERROR: Autoreply email address is invalid (' .$fromAddress. ')! System email address and name will be used.');
             } else {
                 $message->from($fromAddress, $fromAddressName);
@@ -275,63 +268,60 @@ class Message extends Model
             */
             $replyToAddress = null;
 
-            if( Settings::getTranslated('email_address_replyto') ) {
+            if ( Settings::getTranslated('email_address_replyto')) {
                 $replyToAddress = Settings::getTranslated('email_address_replyto');
             }
 
-            if( !empty($componentProperties['autoreply_address_replyto']) ) {
+            if ( !empty($componentProperties['autoreply_address_replyto'])) {
                 $replyToAddress = $componentProperties['autoreply_address_replyto'];
             }
 
-            if( $replyToAddress ) {
-
+            if ( $replyToAddress) {
                 $validator = Validator::make(['email' => $replyToAddress], ['email' => 'required|email']);
 
-                if($validator->fails()){
+                if ($validator->fails()) {
                     Log::error('SMALL CONTACT FORM ERROR: Autoreply Reply To email address is invalid (' .$replyToAddress. ')! No Reply To header will be added.');
                 } else {
                     $message->replyTo($replyToAddress);
                 }
-
             }
         });
-
     }
 
     /**
      * Build and send notification message
      */
-    public function sendNotificationEmail($postData, $componentProperties = [], $formAlias, $formDescription){
+    public function sendNotificationEmail($postData, $componentProperties = [], $formAlias, $formDescription)
+    {
 
-        if(!Settings::getTranslated('allow_notifications')) {
+        if (!Settings::getTranslated('allow_notifications')) {
             return;
         }
 
-        if(!empty($componentProperties['disable_notifications'])) {
+        if (!empty($componentProperties['disable_notifications'])) {
             return;
         }
 
         $sendTo =  (!empty($componentProperties['notification_address_to']) ? $componentProperties['notification_address_to'] : Settings::getTranslated('notification_address_to') );
 
-        $sendToAddresses = explode(',', $sendTo);        
+        $sendToAddresses = explode(',', $sendTo);
         $sendToAddressesValidated = [];
 
-        foreach($sendToAddresses as $sendToAddress) {
-
+        foreach ($sendToAddresses as $sendToAddress) {
             $validator = Validator::make(['email' => trim($sendToAddress)], ['email' => 'required|email']);
     
-            if($validator->fails()){
+            if ($validator->fails()) {
                 Log::error('SMALL CONTACT FORM ERROR: Notification email address (' .trim($sendToAddress). ') is invalid! No notification will be delivered!');
             } else {
                 $sendToAddressesValidated[] = trim($sendToAddress);
             }
         }
 
-        if( !count($sendToAddressesValidated) ) {
+        if ( !count($sendToAddressesValidated)) {
             return;
         }
 
-        if( Settings::getTranslated('allow_email_queue') ){
+        if ( Settings::getTranslated('allow_email_queue')) {
             $method = 'queue';
         } else {
             $method = 'send';
@@ -343,32 +333,30 @@ class Message extends Model
         $replyToAddress = null;
         $replyToName = null;
 
-        foreach($formFields as $field) {
-
+        foreach ($formFields as $field) {
             $fieldValue = null;
 
-            if( !empty( $postData[ $field['name'] ]['value'] ) ) {
-                $fieldValue = e( html_entity_decode( $postData[ $field['name'] ]['value']  ) );
+            if ( !empty($postData[ $field['name'] ]['value'])) {
+                $fieldValue = e(html_entity_decode($postData[ $field['name'] ]['value']));
             } else {
                 $fieldValue = null;
             }
 
-            if( !empty( $field['name'] ) ) {
-                $outputFull[ $field['name'] ] = array_merge( $field, [ 'value' => $fieldValue ] );
+            if ( !empty($field['name'])) {
+                $outputFull[ $field['name'] ] = array_merge($field, [ 'value' => $fieldValue ]);
             }
 
             // If email field is assigned, prepare for replyTo
-            if(empty($replyToAddress) and $field['name'] == Settings::getTranslated('autoreply_email_field') and isset($postData[$field['name']]['value'])){
-                $replyToAddress = e( $postData[$field['name']]['value'] );
+            if (empty($replyToAddress) and $field['name'] == Settings::getTranslated('autoreply_email_field') and isset($postData[$field['name']]['value'])) {
+                $replyToAddress = e($postData[$field['name']]['value']);
             }
 
             // If name field is assigned, prepare for fromAddress
-            if(empty($replyToName) and $field['name'] == Settings::getTranslated('autoreply_name_field') and isset($postData[$field['name']]['value'])){
-                $replyToName = e( $postData[$field['name']]['value'] );
+            if (empty($replyToName) and $field['name'] == Settings::getTranslated('autoreply_name_field') and isset($postData[$field['name']]['value'])) {
+                $replyToName = e($postData[$field['name']]['value']);
             }
 
             $output[ $field['name'] ] = $fieldValue;
-
         }
 
         $output['form_description'] = $formDescription;
@@ -376,41 +364,38 @@ class Message extends Model
 
         $template = Settings::getTranslatedTemplates('en', App::getLocale(), 'notification');
 
-        if( Settings::getTranslated('notification_template') ){
-
-            if(View::exists(Settings::getTranslated('notification_template')) OR !empty( MailTemplate::listAllTemplates()[Settings::getTranslated('notification_template')] ) ) {
+        if ( Settings::getTranslated('notification_template')) {
+            if (View::exists(Settings::getTranslated('notification_template')) or !empty(MailTemplate::listAllTemplates()[Settings::getTranslated('notification_template')])) {
                 $template = Settings::getTranslated('notification_template');
             } else {
                 Log::error('SMALL CONTACT FORM: Missing defined email template: ' . Settings::getTranslated('notification_template') . '. Default template will be used!');
             }
-
         }
 
         /**
          *  Override email template by component property
          *  Language specific template has priority (override non language specific)
          */
-        if ( !empty($componentProperties['notification_template']) and !empty( MailTemplate::listAllTemplates()[ $componentProperties['notification_template'] ] ) ) {
+        if ( !empty($componentProperties['notification_template']) and !empty(MailTemplate::listAllTemplates()[ $componentProperties['notification_template'] ])) {
             $template = $componentProperties['notification_template'];
-        } elseif ( !empty($componentProperties['notification_template']) and empty( MailTemplate::listAllTemplates()[ $componentProperties['notification_template'] ] ) ) {
+        } elseif ( !empty($componentProperties['notification_template']) and empty(MailTemplate::listAllTemplates()[ $componentProperties['notification_template'] ])) {
             Log::error('SMALL CONTACT FORM: Missing defined email template: ' . $componentProperties['notification_template'] . '. ' . $template . ' template will be used!');
         }
 
 
-        if ( !empty($componentProperties[ ('notification_template_'.App::getLocale())]) and !empty( MailTemplate::listAllTemplates()[ $componentProperties[ ('notification_template_'.App::getLocale())] ] ) ) {
+        if ( !empty($componentProperties[ ('notification_template_'.App::getLocale())]) and !empty(MailTemplate::listAllTemplates()[ $componentProperties[ ('notification_template_'.App::getLocale())] ])) {
             $template =  $componentProperties[('notification_template_'.App::getLocale())];
-        } elseif ( !empty($componentProperties[ ('notification_template_'.App::getLocale())]) and empty( MailTemplate::listAllTemplates()[ $componentProperties[ ('notification_template_'.App::getLocale())] ] ) ) {
+        } elseif ( !empty($componentProperties[ ('notification_template_'.App::getLocale())]) and empty(MailTemplate::listAllTemplates()[ $componentProperties[ ('notification_template_'.App::getLocale())] ])) {
             Log::error('SMALL CONTACT FORM: Missing defined email template: ' . $componentProperties[ ('notification_template_'.App::getLocale())] . '. ' . $template . ' template will be used!');
         }
 
-        Mail::{$method}($template, ['fields' => $output, 'fieldsDetails' => $outputFull, 'url' => url()->full()], function($message) use($sendToAddressesValidated, $replyToAddress, $replyToName, $componentProperties, $output){
+        Mail::{$method}($template, ['fields' => $output, 'fieldsDetails' => $outputFull, 'url' => url()->full()], function ($message) use ($sendToAddressesValidated, $replyToAddress, $replyToName, $componentProperties, $output) {
 
-            if( count($sendToAddressesValidated)>1 ) {
-                
-                foreach($sendToAddressesValidated as $address) {
+            if ( count($sendToAddressesValidated)>1) {
+                foreach ($sendToAddressesValidated as $address) {
                     $message->bcc($address);
                 }
-            } elseif( !empty($sendToAddressesValidated[0]) ) {
+            } elseif ( !empty($sendToAddressesValidated[0])) {
                 $message->to($sendToAddressesValidated[0]);
             } else {
                 return;
@@ -426,11 +411,10 @@ class Message extends Model
             /**
             *   Set Reply to address and also set From address if requested
             */
-            if ( !empty($replyToAddress) ) {
-
+            if ( !empty($replyToAddress)) {
                 $validator = Validator::make(['email' => $replyToAddress], ['email' => 'required|email']);
 
-                if($validator->fails()){
+                if ($validator->fails()) {
                     Log::error('SMALL CONTACT FORM ERROR: Notification replyTo address is not valid (' .$replyToAddress. ')! Reply to address will not be used.');
                     return;
                 }
@@ -438,7 +422,7 @@ class Message extends Model
                 $message->replyTo($replyToAddress, $replyToName);
 
                 // Force From field if requested
-                if ( Settings::getTranslated('notification_address_from_form') ) {
+                if ( Settings::getTranslated('notification_address_from_form')) {
                     $message->from($replyToAddress, $replyToName);
                 }
             }
@@ -447,7 +431,6 @@ class Message extends Model
              * Set From address if defined in component property
              */
             if ( !empty($componentProperties['notification_address_from'])) {
-
                 if (!empty($componentProperties['notification_address_from_name'])) {
                     $fromAddressName = $componentProperties['notification_address_from_name'];
                 } else {
@@ -456,7 +439,6 @@ class Message extends Model
 
                 $message->from($componentProperties['notification_address_from'], $fromAddressName);
             }
-
         });
     }
 
@@ -464,7 +446,8 @@ class Message extends Model
      * Test how many times was given IP address used this day
      * @return int
      */
-    public function testIPAddress($ip){
+    public function testIPAddress($ip)
+    {
 
         $today = Carbon::today();
 
@@ -473,7 +456,5 @@ class Message extends Model
                         ->count();
 
         return $count;
-
     }
-
 }

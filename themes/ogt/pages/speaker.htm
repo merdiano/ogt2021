@@ -1,0 +1,55 @@
+title = "Speaker"
+url = "/speaker/:id"
+layout = "main"
+is_hidden = 0
+
+[spikers speaker]
+speakerId = "{{ :id }}"
+noSpikersMessage = "No sponsors found"
+==
+{% set adam = speaker.spikers.first %}
+<div class="speaker__info">
+    <div class="general__info">
+        <div class="avatar__outer">
+            <img src="{{adam.bg_blue|media}}" alt="{{adam.name}}">
+        </div>
+        <div class="general__info-inner">
+            <div class="name">
+                {{adam.name}}
+            </div>
+            <div class="prof">
+                {{adam.title}}
+            </div>
+            <div class="icon__row">
+                <div class="icon__outer">
+                    <img src="{{adam.flag|media}}" alt="flag">
+                </div>
+                <div class="icon__outer">
+                    <img src="{{adam.organization|media}}" alt="organization">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="session">
+        <div class="title">
+            {{'speaker.participating'|_}}
+        </div>
+        <div class="session__header">
+            {{adam.session}}
+        </div>
+        <div class="session__body">
+            <div class="sessionText">
+                {{adam.date|date('jS F')}}
+            </div>
+            <div class="sessionText">
+                <strong>{{'speaker.time'|_}}</strong> {{adam.date|date('G:i')}} - {{adam.date|date_modify('+' ~ adam.time ~ ' minute')|date('G:i')}}
+            </div>
+            <div class="sessionText">
+                <strong>{{'speaker.topic'|_}}</strong> {{adam.topic}}
+            </div>
+        </div>
+    </div>
+</div>
+<p class="para">
+{{adam.content}}
+</p>

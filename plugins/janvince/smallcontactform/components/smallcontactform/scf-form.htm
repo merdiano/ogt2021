@@ -15,7 +15,7 @@
 		{{ __SELF__.getAntispamFieldHtmlCode({})|raw }}
 
 		{{ __SELF__.getDescriptionFieldHtmlCode({})|raw }}
-		
+
 		{{ __SELF__.getRedirectFieldHtmlCode({})|raw }}
 
 		{% if (settingsGet('google_recaptcha_version') is null or settingsGet('google_recaptcha_version') == 'v2checkbox') and settingsGet('add_google_recaptcha') and settingsGet('google_recaptcha_site_key') %}
@@ -33,16 +33,16 @@
 	{{ form_close() }}
 
 	{% if settingsGet('add_google_recaptcha') and settingsGet('google_recaptcha_scripts_allow') %}
-	
+
 		<script src='https://www.google.com/recaptcha/api.js{{ settingsGet("google_recaptcha_locale_allow") and currentLocale ? ("?hl="~currentLocale) }}' async defer></script>
 
 		{% if settingsGet('google_recaptcha_version') == 'v2invisible' %}
 
 			<script>
-				
+
 				function onSubmit_{{ __SELF__.alias }}(token) {
 
-					return new Promise(function(resolve, reject) { 
+					return new Promise(function(resolve, reject) {
 
 						//Your code logic goes here
 

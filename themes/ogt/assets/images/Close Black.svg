@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="22" viewBox="0 0 22 22">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="22" height="22" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Close_White" data-name="Close White" clip-path="url(#clip-path)">
+    <path id="Close" d="M11,12.419,1.419,22,0,20.58,9.581,11,0,1.419,1.419,0,11,9.581,20.58,0,22,1.419,12.419,11,22,20.58,20.58,22Z" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,509 @@
+title = "Event"
+url = "/event/:slug"
+layout = "main"
+is_hidden = 0
+
+[sponsors]
+categoryFilter = "{{ :slug }}"
+typeFilter = 1
+noSponsorsMessage = "No sponsors found"
+
+[spikers]
+categoryFilter = "{{ :slug }}"
+noSpikersMessage = "No sponsors found"
+
+[ogtEvent]
+slug = "{{ :slug }}"
+eventPage = "contact-us"
+==
+{% put topTitle %}
+<div class="hero__2__inner">
+{{event.description|raw}}
+</div>
+{% endput %}
+{% put mouse %}
+<div class="mouse" id="mouse">
+    <svg width="40px" height="100%" viewBox="0 0 247 390" version="1.1" xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+        <path id="wheel" d="M123.359,79.775l0,72.843" style="fill:none;stroke:#fff;stroke-width:20px;" />
+        <path id="mouse"
+              d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z"
+              style="fill:none;stroke:#fff;stroke-width:20px;" />
+    </svg>
+</div>
+{% endput %}
+<section class="eventTab">
+    <div class="auto__container">
+        <div class="eventTab__inner">
+            <button class="tab__btn active" data-tab="#conf">
+                <i class="icon-file"></i>
+                Обзор мероприятия
+            </button>
+            <button class="tab__btn" data-tab="#speaker">
+                <i class="icon-conference"></i>
+                Спикеры
+            </button>
+            <button class="tab__btn" data-tab="#partner">
+                <i class="icon-partners"></i>
+                Партнеры и спонсоры
+            </button>
+            <a href="#" class="link__btn">
+                <i class="icon-clipboard"></i>
+                Программа мероприятия
+            </a>
+            <button class="tab__btn" data-tab="#locate">
+                <i class="icon-locationC"></i>
+                Место проведения
+            </button>
+        </div>
+    </div>
+</section>
+<!-- conf start
+========================================== -->
+<section class="conf event active" id="conf">
+    <div class="auto__container">
+        <div class="conf__inner">
+            <div class="title">
+                О конференции
+            </div>
+            <p class="para">
+                XXV Международная конференция «Нефть и Газ Туркменистана 2020» пройдет 28-29 октября 2020 года в
+                Ашхабаде. Организаторами выступают Государственный концерн «Туркменгаз» и Государственный концерн
+                «Туркменнебит» в партнерстве с компанией «Turkmen Forum».
+            </p>
+            <p class="para">
+                OGT 2020 проводится ежегодно и является престижным бизнес-форумом, cпособствующим развитию и
+                укреплению партнерства с Туркменистаном в нефтегазовой отрасли. В ходе проведения конференции будут
+                представлены: обзор нефтегазового рынка Туркменистана, охватывающий все аспекты деятельности, в том
+                числе и последние газохимические проекты; ведущие эксперты нефтегазовых компаний мира выступят с
+                презентациями, поделятся накопленным опытом.
+            </p>
+            <p class="para">
+                В работе конференции планируют принять участие руководители и представители государственных структур
+                Туркменистана и ведущих нефтегазовых компаний, крупнейших международных организаций и финансовых
+                институтов.
+            </p>
+            <p class="para">
+                В течении двух дней конференции докладчиками будут затронуты вопросы развития мировых тенденций в
+                топливно-энергетическом секторе, запланированы презентации и панельные сессии для обмена опытом и
+                информирования участников о состоянии ключевых проектов, которые в настоящее время реализуются в
+                нефтегазовом секторе Туркменистана.
+            </p>
+            <p class="para">
+                Панельные сессии этого года затронут такие темы, как: «Энергетическая дипломатия Туркменистана –
+                залог энергетической безопасности и устойчивого развития в регионе», «Глобальные тенденции на
+                энергетических рынках и перспектива развития взаимовыгодного сотрудничества », «Привлечение
+                инвестиций в морские блоки Турменского сектора Каспийского моря, «Монетизация нефти и газа – новые
+                инвестиционные возможности» и «Газохимический и нефтеперерабатывающий комплекс Туркменистана –
+                образец эффективности и экологической безопасности». Руководство нефтегазовой отрасли Туркменистана
+                и топ менеджеры международных компаний, в том числе и работающих в настоящее время в Туркменистане,
+                примут участие в этих заседаниях, чтобы обсудить последние актуальные направления развития мировой
+                энергетики и нефтегазовой отрасли Туркменистана.
+            </p>
+            <p class="para">
+                В рамках этого крупнейшего нефтегазового бизнес-форума представителям иностранных компаний
+                предоставится возможность встретиться с руководством нефтегазового комплекса Туркменистана, чтобы
+                обсудить как актуальные вопросы, так и установить взаимовыгодное сотрудничество.
+            </p>
+            <p class="para">
+                В связи с введенными ограничениями на международные поездки, OGT-2020 также будет представлена в
+                онлайн формате, что предоставит зарубежным партнерам доступ ко всем сессиям конференции, включая
+                встречи с руководством нефтегазового комплекса Туркменистана.
+            </p>
+            <p class="para">
+                Более подробную информацию об OGT 2020 Вы сможете найти на сайте www.ogt-turkmenistan.com, а также
+                связавшись с нами по электронной почте: info@turkmen-forum.com или по
+                телефону: +993 12 920399.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- conf start
+========================================== -->
+<!-- spiker start
+========================================== -->
+<section class="spiker event" id="speaker">
+    <div class="auto__container">
+        <div class="spiker__inner">
+            <div class="spiker__grid-blue">
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+                <div class="spiker__grid-blue-column">
+                    <div class="image__outer">
+                        <img src="assets/images/avatar/blue.png" alt="">
+                    </div>
+                    <a href="" class="info">
+                        <div class="name">
+                            БАТЫР АМАНОВ
+                        </div>
+                        <div class="position">
+                            Государственный министр - Председатель ГК "Туркменгаз"
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- spiker end
+========================================== -->
+<!-- partner start
+========================================== -->
+<section class="partner event" id="partner">
+    <div class="auto__container">
+        <div class="partner__inner">
+            <div class="title">
+                Официальные партнеры
+            </div>
+            <div class="partner__row">
+                <a href="#" class="image__outer">
+                    <img src="assets/images/partner/1/1.png" alt="">
+                </a>
+                <div class="image__outer">
+                    <img src="assets/images/partner/1/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/1/3.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/1/4.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/1/5.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/1/6.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/1/7.png" alt="">
+                </div>
+            </div>
+            <div class="title">
+                Платиновые спонсоры
+            </div>
+            <div class="partner__row">
+                <div class="image__outer">
+                    <img src="assets/images/partner/2/1.png" alt="">
+                </div>
+            </div>
+            <div class="title">
+                Платиновые спонсоры
+            </div>
+            <div class="partner__row">
+                <div class="image__outer">
+                    <img src="assets/images/partner/3/1.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/3/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/3/3.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/3/4.png" alt="">
+                </div>
+            </div>
+            <div class="title">
+                Серебряные Спонсоры
+            </div>
+            <div class="partner__row">
+                <div class="image__outer">
+                    <img src="assets/images/partner/4/1.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/4/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/4/3.png" alt="">
+                </div>
+            </div>
+            <div class="title">
+                Бронзовые Спонсоры
+            </div>
+            <div class="partner__row">
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/1.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/3.png" alt="">
+                </div>
+            </div>
+            <div class="title">
+                Официальные партнеры
+            </div>
+            <div class="partner__row">
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/1.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/3.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/1.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/3.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/1.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/3.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/1.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/3.png" alt="">
+                </div>
+
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/1.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/2.png" alt="">
+                </div>
+                <div class="image__outer">
+                    <img src="assets/images/partner/5/3.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- partner end
+========================================== -->
+<!-- locate start
+========================================== -->
+<section class="locate event" id="locate">
+    <div class="auto__container">
+        <div class="locate__inner">
+            <div class="title">
+                Место проведения
+            </div>
+            <div class="locate__row">
+                <div class="locate__column">
+                    <div class="locate__title">
+                        Информация о месте проведения
+                    </div>
+                    <p class="para">
+                        Торгово-промышленная палата Туркменистана (ТПП) создана в целях содействия развитию
+                        экономики Туркменистана, ее интегрированию в мировую хозяйственную систему, формированию
+                        современной промышленной, финансовой и торговой инфраструктуры, создания благоприятных
+                        условий для предпринимательской деятельности, оказания содействия в установлении
+                        торгово-экономических, научных и технических связей с зарубежными партнерами. 24-я
+                        Международная конференция «Нефть и газ Туркменистана» пройдет в конференц-зале
+                        Торгово-промышленной палаты Туркменистана.
+                    </p>
+                    <div class="locate__row-sm">
+                        <div class="icon__outer">
+                            <i class="icon-location"></i>
+                        </div>
+                        <div class="info">
+                            <div class="label">
+                                Адрес:
+                            </div>
+                            <div class="label__text">
+                                г. Ашхабад, шаелы Чандыбиль, 143,
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locate__row-sm">
+                        <div class="icon__outer">
+                            <i class="icon-world"></i>
+                        </div>
+                        <div class="info">
+                            <div class="label">
+                                Веб-сайт:
+                            </div>
+                            <div class="label__text">
+                                <a href="#">
+                                    www.cci.gov.tm
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locate__row-sm">
+                        <div class="icon__outer">
+                            <i class="icon-phone"></i>
+                        </div>
+                        <div class="info">
+                            <div class="label">
+                                Телефон:
+                            </div>
+                            <div class="label__text">
+                                <a href="#">
+                                    (+993 12) 39 89 81 , 39 88 92
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="locate__image">
+                    <img src="assets/images/place/1.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- locate end
+========================================== -->
+{% put scripts %}
+<script src="{{'assets/js/tab.js'|theme}}"></script>
+{% endput %}

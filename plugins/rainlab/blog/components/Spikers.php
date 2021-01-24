@@ -16,7 +16,7 @@ class Spikers extends ComponentBase
      *
      * @var Collection
      */
-    public $sponsors;
+    public $spikers;
 
     /**
      * Message to display when there are no messages
@@ -38,6 +38,12 @@ class Spikers extends ComponentBase
             'categoryFilter' => [
                 'title'       => 'rainlab.blog::lang.settings.posts_filter',
                 'description' => 'rainlab.blog::lang.settings.posts_filter_description',
+                'type'        => 'string',
+                'default'     => '',
+            ],
+            'speakerId' => [
+                'title'       => 'Speaker id',
+                'description' => 'Enter speakers id if you want one speaker',
                 'type'        => 'string',
                 'default'     => '',
             ],
@@ -74,15 +80,20 @@ class Spikers extends ComponentBase
 
         $this->category = $this->page['category'] = $this->loadCategory();
 
+        $speakerId = $this->property('speakerID');
+
         $query = new Spiker;
 
         if($this->category){
             $query->where('category_id',$this->category->id);
         }
 
+        if($speakerId){
+            $query->where('id',$speakerId);
+        }
         $query->orderBy('order');
 
-        $this->sponsors = $this->page['spikers'] = $query->get();
+        $this->spikers = $this->page['spikers'] = $query->get();
 
     }
 }

@@ -9,39 +9,53 @@ fields:
         span: auto
         required: 1
         type: dropdown
+    name:
+        label: 'rainlab.blog::lang.name'
+        span: auto
+        required: 1
+        type: text
+        tab: General
+    title:
+        label: 'rainlab.blog::lang.title'
+        span: auto
+        required: 1
+        type: text
+        tab: General
+    content:
+        label: Biography
+        size: ''
+        span: full
+        required: 1
+        type: textarea
 tabs:
     fields:
-        name:
-            label: 'rainlab.blog::lang.name'
-            span: left
-            required: 1
-            type: text
-            tab: General
-        title:
-            label: 'rainlab.blog::lang.title'
-            span: right
-            required: 1
-            type: text
-            tab: General
         bg_white:
             label: 'rainlab.blog::lang.bg_white'
             mode: image
             span: auto
+            cssClass: col-3
             type: mediafinder
-            tab: General
+            tab: Images
         bg_blue:
-            label: 'rainlab.blog::lang.bg_blue_image'
+            label: 'Bg blue image (320x320)'
+            mode: image
+            imageWidth: '320'
+            imageHeight: '320'
+            span: auto
+            type: mediafinder
+            tab: Images
+        flag:
+            label: 'Country Flag (80x54)'
             mode: image
             span: auto
             type: mediafinder
-            tab: General
-        content:
-            label: 'rainlab.blog::lang.content'
-            size: ''
-            span: full
-            required: 1
-            type: textarea
-            tab: General
+            tab: Images
+        organization:
+            label: 'Organization logo (80x54)'
+            mode: image
+            span: auto
+            type: mediafinder
+            tab: Images
         topic:
             label: 'rainlab.blog::lang.topic'
             span: left
@@ -59,7 +73,7 @@ tabs:
             type: datepicker
             tab: 'rainlab.blog::lang.auditon'
         time:
-            label: 'rainlab.blog::lang.time'
+            label: 'Speech Duration (minute)'
             span: auto
             type: text
             tab: 'rainlab.blog::lang.auditon'

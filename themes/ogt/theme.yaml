@@ -3,3 +3,5 @@ description: 'ogt template'
 author: merdan
 homepage: ''
 code: ogt
+form: config/settings.yaml
+translate: config/lang.yaml

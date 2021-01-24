@@ -1,2 +1,198 @@
 [viewBag]
+
+[staticMenu]
+code = "main-menu"
 ==
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+<!-- Page Preloder -->
+<!-- topHeader start
+========================================== -->
+<div class="topHeader">
+    <div class="auto__container">
+        <div class="topHeader__inner">
+            <div class="info__row">
+                {% if(this.theme.phone) %}
+                <a href="#" class="info__row-link">
+                    <i class="icon-phone"></i>
+                    {{ this.theme.phone }}
+                </a>
+                {% endif %}
+                {% if(this.theme.eMail) %}
+                <a href="#" class="info__row-link">
+                    <i class="icon-mail"></i>
+                    {{this.theme.eMail}}
+                </a>
+                {% endif %}
+            </div>
+            <div class="social__row">
+                {% if(this.theme.facebook) %}
+                <a href="{{this.theme.facebook}}" class="social__row-link">
+                    <i class="icon-facebook"></i>
+                </a>
+                {% endif %}
+                {% if(this.theme.instagram) %}
+                <a href="{{this.theme.instagram}}" class="social__row-link">
+                    <i class="icon-instagram"></i>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- topHeader end
+========================================== -->
+<!-- logoRow start
+========================================== -->
+<section class="logoRow">
+    <div class="auto__container">
+        <div class="logoRow__inner">
+            <div class="logoRow__inner-column">
+                {% if this.theme.logo1 %}
+                <div class="logo__outer">
+                    <a href="/"><img src="{{this.theme.logo1.path}}" alt="{{this.theme.logo1.title}}"></a>
+                </div>
+                {% endif %}
+                {% if this.theme.logo2 %}
+                <div class="logo__outer">
+                    <img src="{{this.theme.logo2.path}}" alt="{{this.theme.logo2.title}}">
+                </div>
+                {% endif %}
+                {% if this.theme.logo3 %}
+                <div class="logo__outer">
+                    <img src="{{this.theme.logo3.path}}" alt="{{this.theme.logo3.title}}">
+                </div>
+                {% endif %}
+                {% if this.theme.logo4 %}
+                <div class="logo__outer">
+                    <img src="{{this.theme.logo4.path}}" alt="{{this.theme.logo4.title}}">
+                </div>
+                {% endif %}
+            </div>
+            <div class="logoRow__inner-column">
+                {% if activeLocale == 'ru'%}
+                <a href="#" class="language" data-request="onSwitchLocale" data-request-data="locale: 'en'">English</a>
+                {% else %}
+                <a href="#" class="language" data-request="onSwitchLocale" data-request-data="locale: 'ru'">Russian</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- logoRow end========================================== -->
+<!-- mobileHeader start======================================== -->
+<section class="mobileHeader">
+    <div class="mobileHeader__inner">
+        <div class="mobileLogo__row">
+            <div class="mobileLogo">
+                <img src="{{this.theme.logo1.path}}" alt="ogt-logo">
+            </div>
+        </div>
+        <div class="mobileBtns">
+            <button class="popBtn" id="mobileMenuBtn">
+                <img src="{{'assets/images/Union 1.svg'|theme}}" alt="">
+            </button>
+        </div>
+    </div>
+</section>
+<!-- mobileHeader end ======================================= -->
+<!-- header start
+========================================== -->
+<header class="header" id="headerSticky">
+    <div class="auto__container">
+        <div class="header__inner">
+            {% component 'staticMenu'%}
+        </div>
+    </div>
+</header>
+<!-- header end
+========================================== -->
+<!-- mobileMenu start
+========================================= -->
+<section class="pop" id="mobileMenu">
+    <div class="popClose" id="mobileMenuClose">
+        <img src="assets/images/Close Black.svg" alt="">
+    </div>
+    <div class="pop__inner">
+        <div class="mobile__nav">
+            <a href="#" class="mobile__nav-link" onclick="showMore()">
+                About Conference
+                <div class="icon__outer">
+                    <i class="icon-chevronRight"></i>
+                </div>
+            </a>
+            <div class="dropDown" id="showMoreList">
+                <a href="aboutConf.html" class="dropDown__link">
+                    About Conference
+                </a>
+                <a href="overview.html" class="dropDown__link">
+                    Market Overview
+                </a>
+                <a href="support.html" class="dropDown__link">
+                    Official Support
+                </a>
+                <a href="speaker.html" class="dropDown__link">
+                    Speakers
+                </a>
+                <a href="#" class="dropDown__link">
+                    Online Conference
+                </a>
+                <a href="portal.html" class="dropDown__link">
+                    Presentation portal
+                </a>
+                <a href="participant.html" class="dropDown__link">
+                    Participating Companies
+                </a>
+                <a href="sponsor.html" class="dropDown__link">
+                    OGT-2020 Sponsors
+                </a>
+                <a href="register.html" class="dropDown__link">
+                    Become a Delegate
+                </a>
+                <a href="#" class="dropDown__link">
+                    Conference Programme
+                </a>
+                <a href="#" class="dropDown__link">
+                    Guide to OGT LIVE
+                </a>
+            </div>
+            <a href="#" class="mobile__nav-link">
+                Next Event
+            </a>
+            <a href="#" class="mobile__nav-link" onclick="showMore2()">
+                Past Event
+                <div class="icon__outer">
+                    <i class="icon-chevronRight"></i>
+                </div>
+            </a>
+            <div class="dropDown" id="showMoreList2">
+                <a href="event.html" class="dropDown__link">
+                    Event 1
+                </a>
+                <a href="#" class="dropDown__link">
+                    Event 2
+                </a>
+                <a href="#" class="dropDown__link">
+                    Event 3
+                </a>
+                <a href="#" class="dropDown__link">
+                    Event 4
+                </a>
+            </div>
+            <a href="gallery.html" class="mobile__nav-link">
+                Photo Gallery
+            </a>
+            <a href="news.html" class="mobile__nav-link">
+                News
+            </a>
+            <a href="contact.html" class="mobile__nav-link">
+                Contact us
+            </a>
+        </div>
+    </div>
+</section>
+<!-- mobileMenu end
+========================================= -->
+

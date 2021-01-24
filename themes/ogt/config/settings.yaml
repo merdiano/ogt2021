@@ -1,0 +1,48 @@
+tabs:
+  fields:
+    logo1:
+      tab: General
+      label: Logo first
+      type: fileupload
+      mode: image
+      span: left
+    logo2:
+        tab: General
+        label: Logo second
+        type: fileupload
+        mode: image
+        span: right
+    logo3:
+        tab: General
+        label: Logo third
+        type: fileupload
+        mode: image
+        span: left
+    logo4:
+        tab: General
+        label: Logo fourth
+        type: fileupload
+        mode: image
+        span: right
+    phone:
+      tab: General
+      label: phone
+      default: (+993 12) 92 35 52, 92 03 99
+      span: left
+    eMail:
+      tab: General
+      label: e-mail
+      default: info@turkmen-forum.com
+      span: right
+    facebook:
+        tab: General
+        label: Facebook page
+        default: https://facebook.com
+        span: left
+    instagram:
+        tab: General
+        label: instagram page
+        default: https://instagram.com
+        span: right
+
+

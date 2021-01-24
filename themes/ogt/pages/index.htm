@@ -1,7 +1,96 @@
 title = "Home"
 url = "/"
-layout = "main"
+layout = "landing"
 is_hidden = 0
 ==
-{% placeholder name %}
-{% content 'about-ogt2021/about.htm' %}
+<!-- hero start
+========================================== -->
+<section class="hero" id="feature">
+    <a href="" class="next__event">
+        {{'Следующее мероприятие'|_}}
+        <i class="icon-chevronRight"></i>
+    </a>
+    <div class="auto__container">
+        <div class="hero__inner">
+<!--            <div class="timer__row">-->
+<!--                <div class="timer__outer  wow fadeInLeft">-->
+<!--                    <div class="timer">-->
+<!--                        120-->
+<!--                    </div>-->
+<!--                    <div class="timer__text">-->
+<!--                        Дней-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="timer__outer  wow fadeInUp">-->
+<!--                    <div class="timer">-->
+<!--                        20-->
+<!--                    </div>-->
+<!--                    <div class="timer__text">-->
+<!--                        Часов-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="timer__outer  wow fadeInUp">-->
+<!--                    <div class="timer">-->
+<!--                        02-->
+<!--                    </div>-->
+<!--                    <div class="timer__text">-->
+<!--                        Минут-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="timer__outer  wow fadeInRight">-->
+<!--                    <div class="timer">-->
+<!--                        39-->
+<!--                    </div>-->
+<!--                    <div class="timer__text">-->
+<!--                        Секунд-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="title wow fadeInUp">
+                {{'Международный инвестиционный форум по привлечению
+                инвестиций в нефтегазовый сектор Туркменистана'|_}}
+            </div>
+            <div class="date wow fadeInUp">
+                {{'12-13 Мая, 2021'|_}}
+            </div>
+            <div class="location wow fadeInUp">
+                {{'г. Ашхабад, Туркменистан'|_}}
+            </div>
+            <div class="btn__row wow fadeInUp">
+                <a href="{{'registration'|page}}" class="hero__btn">
+                    {{'Зарегистрироваться'|_}}
+                </a>
+<!--                <a href="#" class="hero__btn">-->
+<!--                    Конференция в прямом эфире-->
+<!--                </a>-->
+<!--                <a href="#" class="hero__btn">-->
+<!--                    Программа мероприятия-->
+<!--                </a>-->
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- hero end
+========================================== -->
+{% put scripts %}
+<script src="{{ 'assets/js/tilt.jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/js/wow.js'|theme }}"></script>
+<script src="{{ 'assets/js/lazyLoad.js'|theme }}"></script>
+<script>
+    $('.video').parent().click(function () {
+        if ($(this).children(".video").get(0).paused) {
+            $(this).children(".video").get(0).play();
+            $(this).children(".playpause").fadeOut();
+        } else {
+            $(this).children(".video").get(0).pause();
+            $(this).children(".playpause").fadeIn();
+        }
+    });
+    // wow js
+    // ========================================
+
+    // wow js end
+    // ========================================
+</script>
+{% endput %}

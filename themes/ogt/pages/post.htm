@@ -1,0 +1,44 @@
+title = "Post"
+url = "/post/:id/:slug"
+layout = "main"
+is_hidden = 0
+
+[blogPost post]
+slug = "{{ :slug }}"
+categoryPage = "event"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+==
+<div class="news__row-side">
+    <div class="content">
+        <div class="title">
+            {{post.title}}
+        </div>
+        {{post.content|md}}
+    </div>
+    <div class="side">
+        {% if posts %}
+        <div class="title">
+            {{'post.latest'|_}}
+        </div>
+        {% for post in posts %}
+        <div class="news__row-sm">
+            <div class="image__outer">
+                <img src="{{post.featured_images.first.thumb(100,100)}}" alt="{{post.featured_images.first.title}}">
+            </div>
+            <div class="content">
+                <a href="{{post.url}}" class="title">
+                    {{post.title}}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>

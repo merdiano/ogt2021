@@ -1,28 +1,36 @@
-# ===================================
-#  Field Definitions
-# ===================================
-
 fields:
-
     name:
-        label: rainlab.blog::lang.category.name
-        placeholder: rainlab.blog::lang.category.name_placeholder
+        label: 'rainlab.blog::lang.category.name'
+        placeholder: 'rainlab.blog::lang.category.name_placeholder'
         span: left
-
+        type: text
     slug:
-        label: rainlab.blog::lang.category.slug
+        label: 'rainlab.blog::lang.category.slug'
         span: right
-        placeholder: rainlab.blog::lang.category.slug_placeholder
+        placeholder: 'rainlab.blog::lang.category.slug_placeholder'
         preset: name
-
+        type: text
     description:
         label: 'rainlab.blog::lang.category.description'
-        size: large
-        oc.commentPosition: ''
-        span: full
-        type: textarea
-    banner:
-        label: Banner
-        type: fileupload
-        mode: image
+        size: ''
         span: auto
+        type: richeditor
+    address:
+        label: 'Venue Info'
+        size: ''
+        span: auto
+        type: textarea
+    created_at:
+        label: 'Start date'
+        mode: datetime
+        span: auto
+        type: datepicker
+    place:
+        label: 'Venue Image'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

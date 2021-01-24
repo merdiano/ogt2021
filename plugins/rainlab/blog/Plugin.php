@@ -30,6 +30,7 @@ class Plugin extends PluginBase
             'RainLab\Blog\Components\RssFeed'    => 'blogRssFeed',
             'RainLab\Blog\Components\Spikers'    => 'spikers',
             'RainLab\Blog\Components\Sponsors'    => 'sponsors',
+            'RainLab\Blog\Components\OgtEvent'    => 'ogtEvent',
         ];
     }
 

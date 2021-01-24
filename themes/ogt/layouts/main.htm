@@ -1,51 +1,36 @@
 description = "main layout"
 
 [localePicker]
-forceUrl = 0
+forceUrl = 1
 
 [staticPage]
 useContent = 1
 default = 0
 ==
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="{{ this.page.meta_title | default(this.theme.site)}}">
-    <meta name="description" content="{{ this.page.meta_description }}">
-    <meta name="canonical" content="{{ this.page.meta_canonical }}">
-    <meta name="keywords" content="{{ this.page.meta_keywords }}">
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet">
-
-    <title>{{ this.page.title }}</title>
-    {% styles %}
-    <link href="{{ 'assets/css/main.css'|theme }}" rel="stylesheet">
-
-</head>
+<html lang="{{activeLocale}}">
+{% partial 'head' %}
 <body>
-    <!-- Page Preloder -->
-<!--    <div id="preloder">-->
-<!--        <div class="loader"></div>-->
-<!--    </div>-->
-    <!-- Page Preloder -->
-    {% partial 'header'%}
-
-    {% page %}
-
-    {% partial 'footer' %}
-    <!-- footer end
-    ===================================================== -->
-    <!-- javascript
-    ================================================== -->
-    <script src="{{ 'assets/js/jquery.js'|theme }}"></script>
-    <script src="{{ 'assets/js/main.js'|theme }}"></script>
-
-    {% framework extras %}
-    {% scripts %}
+{% partial 'header'%}
+    <section class="hero__3" id="feature">
+        <div class="auto__container">
+            {% placeholder topTitle default %}
+            <div class="hero__3__inner">
+                <div class="title">
+                    {{title|default(this.page.title)}}
+                </div>
+            </div>
+            {% endplaceholder %}
+        </div>
+        {% placeholder mouse %}
+    </section>
+    <section class="other">
+        <div class="auto__container">
+            <div class="other__inner">
+                {% page %}
+            </div>
+        </div>
+    </section>
+{% partial 'footer'%}
 </body>
 </html>

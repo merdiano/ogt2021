@@ -33,9 +33,6 @@ class Sponsor extends Model
     public $belongsTo = [
         'category' => ['RainLab\Blog\Models\Category','order' => 'name']
     ];
-    public $attachOne = [
-        'logo' => 'System\Models\File'
-    ];
 
     public function getCategoryIdOptions(){
         return Category::all()->pluck('name','id');

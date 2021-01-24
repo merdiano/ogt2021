@@ -1,15 +1,21 @@
 {% for item in items if not item.viewBag.isHidden %}
-    <li role="presentation" class="{{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'child-active' : '' }} {{ item.viewBag.cssClass }}">
         {% if item.url %}
-            <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }}>
+            <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="nav__link {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'child-active' : '' }} {{ item.viewBag.cssClass }}">
                 {{ item.title }}
             </a>
-        {% else %}
-            <span>{{ item.title }}</span>
         {% endif %}
 
         {% if item.items %}
-            <ul>{% partial __SELF__ ~ "::items" items=item.items %}</ul>
+        <div class="nav__link pop {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'child-active' : '' }} {{ item.viewBag.cssClass }}">
+            {{ item.title }}
+            <i class="icon-chevronRight"></i>
+            <div class="pop__inner">
+            {% for menu in item.items %}
+                <a href="{{ menu.url }}" {{ menu.viewBag.isExternal ? 'target="_blank"' }} class="pop__link {{ menu.viewBag.cssClass }}">
+                {{ menu.title }}
+                </a>
+            {% endfor %}
+            </div>
+        </div>
         {% endif %}
-    </li>
 {% endfor %}
