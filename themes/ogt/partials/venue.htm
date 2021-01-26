@@ -1,0 +1,55 @@
+[viewBag]
+==
+<div class="locate__column">
+    <div class="locate__title">
+        {{'contact.venue'|_}}
+    </div>
+    <p class="para">
+        {{event.address}}
+    </p>
+    <div class="locate__row-sm">
+        <div class="icon__outer">
+            <i class="icon-mail"></i>
+        </div>
+        <div class="info">
+            <div class="label">
+                {{'contact.email'|_}}
+            </div>
+            <div class="label__text">
+                <a href="#">
+                    {{this.theme.eMail}}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="locate__row-sm">
+        <div class="icon__outer">
+            <i class="icon-world"></i>
+        </div>
+        <div class="info">
+            <div class="label">
+                {{'contact.site'|_}}
+            </div>
+            <div class="label__text">
+                <a href="#">
+                    {{'www.cci.gov.tm'|_}}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="locate__row-sm">
+        <div class="icon__outer">
+            <i class="icon-phone"></i>
+        </div>
+        <div class="info">
+            <div class="label">
+                {{'contact.phone'}}
+            </div>
+            <div class="label__text">
+                <a href="#">
+                    {{this.theme.phone}}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

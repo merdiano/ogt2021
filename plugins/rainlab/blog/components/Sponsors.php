@@ -6,7 +6,7 @@ namespace RainLab\Blog\Components;
 
 use Cms\Classes\ComponentBase;
 use October\Rain\Database\Collection;
-use RainLab\Blog\Models\Category as BlogCategory;
+use RainLab\Blog\Models\Category as Event;
 use RainLab\Blog\Models\Sponsor;
 
 class Sponsors extends ComponentBase
@@ -18,6 +18,7 @@ class Sponsors extends ComponentBase
      */
     public $sponsors;
 
+    public $event;
     /**
      * Message to display when there are no messages
      *
@@ -35,7 +36,7 @@ class Sponsors extends ComponentBase
 
     public function defineProperties(){
         return [
-            'categoryFilter' => [
+            'event' => [
                 'title'       => 'rainlab.blog::lang.settings.posts_filter',
                 'description' => 'rainlab.blog::lang.settings.posts_filter_description',
                 'type'        => 'string',
@@ -70,41 +71,40 @@ class Sponsors extends ComponentBase
         ] ;
     }
 
-    protected function loadCategory()
+    protected function loadEvent()
     {
-        if (!$slug = $this->property('categoryFilter')) {
-            return null;
+        if (!$slug = $this->property('event')) {
+            return Event::where('type',1)->latest()->first(['id','name']);
         }
 
-        $category = new BlogCategory;
+        $event = new Event;
 
-        $category = $category->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
-            ? $category->transWhere('slug', $slug)
-            : $category->where('slug', $slug);
+        $event = $event->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
+            ? $event->transWhere('slug', $slug)
+            : $event->where('slug', $slug);
 
-        $category = $category->first();
+        $event = $event->first(['id','name']);
 
-        return $category ?: null;
+        return $event ?: null;
     }
 
     public function onRun()
     {
         $this->noRecordsMessage = $this->page['noSponsorsMessage'] = $this->property('noSponsorsMessage');
 
-        $this->category = $this->page['category'] = $this->loadCategory();
+        $this->event = $this->page['event'] = $this->loadEvent();
 
-        $query = new Sponsor;
-
-        if($this->category){
-            $query->where('category_id',$this->category->id);
+        $query = Sponsor::query();
+        if($this->event){
+            $query->where('category_id',$this->event->id);
         }
+
+        $query->orderBy('type','ASC');
+        $query->orderBy('order','ASC');
 
 //        if($this->property('typeFilter')){
 //            $query->where('type',$this->property('typeFilter'));
 //        }
-
-        $query->orderBy('type','ASC');
-        $query->orderBy('order','ASC');
 
         $this->sponsors = $this->page['sponsors'] = $query->get();
 

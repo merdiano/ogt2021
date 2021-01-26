@@ -1,0 +1,53 @@
+title = "Presentation"
+url = "/presentation"
+layout = "main"
+is_hidden = 0
+
+[session]
+security = "user"
+allowedUserGroups[] = "registered"
+redirect = "presentation-portal"
+==
+<?php
+function onStart() {
+    $folder = '/presentation/';
+    $mediaLib = \System\Classes\MediaLibrary::instance();
+    // it will return us MediaLibraryItem instance
+    $sessions = $mediaLib->listFolderContents($folder);
+    $presentatnions = [];
+    foreach($sessions as $session){
+        $title= str_replace($folder,'',$session->path);
+        $files = $mediaLib->listFolderContents($session->path);
+        $presentatnions[] = array('title'=>$title,'files'=>$files,'folder' => $session->path.'/');
+    }
+    $this['presentatnions'] = $presentatnions;
+}
+?>
+==
+{% for session in presentatnions %}
+<div class="plenary">
+    {{session.title}}
+</div>
+<div class="present__row">
+    {% for file in session.files %}
+    <div class="present__column">
+        <div class="icon__window">
+            <div class="icon__outer">
+                {% if file.getFileType == 'video' %}
+                <img src="{{'assets/images/presentIcon/video.jpg'|theme}}" alt="">
+                {% else %}
+                <img src="{{'assets/images/presentIcon/doc.png'|theme}}" alt="" height="77" width="77">
+                {% endif %}
+            </div>
+        </div>
+        <div class="name">
+            {{file.path|replace({(session.folder):' '}) }}
+
+        </div>
+        <a href="{{file.path|media}}" class="download" download>
+            {{'presentation.download'|_}}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}

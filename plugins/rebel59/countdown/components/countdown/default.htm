@@ -1,0 +1,28 @@
+
+{% if not error %}
+<div id="countdown" class="timer__row">
+
+</div>
+{%endif%}
+
+{% put scripts %}
+<script>
+    $(document).ready(function(){
+        $.request('onCountdownDate',{
+            success: function(data){
+                $('#countdown').countdown(data.date).on('update.countdown', function(event) {
+                    var countdown = $(this).html(event.strftime(''
+                        + '<div class="timer__outer "><div class="timer">%D</div><div class="timer__text"> %!D:{{"home.count_day"|_}}; </div></div>'
+                        + '<div class="timer__outer"><div class="timer">%H</div><div class="timer__text">%!H:{{"home.count_hour"|_}};</div></div>'
+                        + '<div class="timer__outer"><div class="timer">%M</div><div class="timer__text">{{"home.count_min"|_}}</div></div>'
+                        + '<div class="timer__outer"><div class="timer">%S</div><div class="timer__text">{{"home.count_sec"|_}}</div></div>'
+                    ));
+
+                    $('#countdown').addClass('show');
+                });
+            }
+        })
+    });
+
+</script>
+{% endput %}

@@ -1,0 +1,17 @@
+[codeLogin]
+redirect = "presentation"
+button = "enter"
+
+[viewBag]
+snippetCode = "codeLogin"
+snippetName = "Code Login"
+==
+{{ form_ajax('codeLogin::onCodesignin', {name:codeLogin}) }}
+<div class="portal__input">
+    <input type="{{ visible ? 'text' : 'password' }}" name="code" placeholder="Введите пароль">
+</div>
+<button class="portal__btn" type="submit">
+    Получить доступ
+</button>
+
+{{ form_close() }}

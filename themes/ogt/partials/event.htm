@@ -1,0 +1,21 @@
+[viewBag]
+snippetCode = "event"
+snippetName = "Event"
+snippetProperties[type][title] = "type"
+snippetProperties[type][type] = "dropdown"
+snippetProperties[type][default] = 1
+snippetProperties[type][options][] = "Past"
+snippetProperties[type][options][] = "Active"
+snippetProperties[type][options][] = "Next"
+snippetProperties[slug][title] = "slug"
+snippetProperties[slug][type] = "string"
+snippetProperties[slug][default] = ""
+snippetProperties[slug][options][] = ""
+
+[ogtEvent]
+slug = "{{ :slug }}"
+type = 1
+==
+<div class="hero__2__inner">
+{{event.description|raw}}
+</div>

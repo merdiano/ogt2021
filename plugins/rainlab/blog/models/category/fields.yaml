@@ -11,13 +11,13 @@ fields:
         preset: name
         type: text
     description:
-        label: 'rainlab.blog::lang.category.description'
+        label: 'Banner Text'
         size: ''
         span: auto
         type: richeditor
     address:
         label: 'Venue Info'
-        size: ''
+        size: large
         span: auto
         type: textarea
     created_at:
@@ -34,3 +34,17 @@ fields:
             extension: auto
         span: auto
         type: fileupload
+    about:
+        label: 'About Conference'
+        size: ''
+        span: auto
+        type: richeditor
+    type:
+        label: 'Event type'
+        options:
+            - 'Past Event'
+            - 'Active Event'
+            - 'Next Event'
+        span: auto
+        required: 1
+        type: balloon-selector

@@ -1,0 +1,26 @@
+description = "About conference"
+
+[viewBag]
+snippetCode = "about"
+snippetName = "About"
+snippetProperties[type][title] = "Event type"
+snippetProperties[type][type] = "dropdown"
+snippetProperties[type][default] = 1
+snippetProperties[type][options][] = "Past"
+snippetProperties[type][options][] = "Active"
+snippetProperties[type][options][] = "Next"
+snippetProperties[slug][title] = "Event slug"
+snippetProperties[slug][type] = "string"
+snippetProperties[slug][default] = ""
+snippetProperties[slug][options][] = ""
+
+[ogtEvent]
+slug = "{{slug}}"
+type = 1
+==
+<div class="title">
+    {{event.name}}
+</div>
+<div class="text__outer">
+    {{event.about|raw}}
+</div>

@@ -4,7 +4,7 @@ items:
         nesting: null
         type: header
         url: null
-        code: ''
+        code: about
         reference: null
         cmsPage: null
         replace: null
@@ -104,13 +104,11 @@ items:
                     isExternal: '0'
             -
                 title: 'Presentation portal'
-                nesting: null
-                type: cms-page
-                url: null
+                nesting: 0
+                type: static-page
                 code: ''
-                reference: presentation-portal
-                cmsPage: null
-                replace: null
+                reference: presentatnion-portal
+                replace: 0
                 viewBag:
                     locale:
                         ru:
@@ -155,13 +153,13 @@ items:
                     isExternal: '0'
             -
                 title: 'Become a Delegate'
-                nesting: null
-                type: cms-page
+                nesting: 0
+                type: static-page
                 url: null
                 code: ''
-                reference: registration
+                reference: become-delegate
                 cmsPage: null
-                replace: null
+                replace: 0
                 viewBag:
                     locale:
                         ru:
@@ -206,9 +204,13 @@ items:
                     isExternal: '0'
     -
         title: 'Next Event'
+        nesting: null
         type: url
-        url: /en/event/ogt-2021
+        url: /en/event/ogt-next
         code: ''
+        reference: null
+        cmsPage: null
+        replace: null
         viewBag:
             locale:
                 ru:
@@ -222,7 +224,7 @@ items:
         nesting: null
         type: header
         url: null
-        code: ''
+        code: past
         reference: null
         cmsPage: null
         replace: null
@@ -234,6 +236,92 @@ items:
             isHidden: '0'
             cssClass: ''
             isExternal: '0'
+        items:
+            -
+                title: 'TGC 2019'
+                nesting: null
+                type: url
+                url: /event/tgc2019
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    locale:
+                        ru:
+                            title: ''
+                            url: ''
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Roadshow Dubai'
+                nesting: null
+                type: url
+                url: /event/roadshow-dubai-february
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    locale:
+                        ru:
+                            title: ''
+                            url: ''
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'OGT 2019'
+                nesting: null
+                type: url
+                url: /event/ogt-2019-october
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    locale:
+                        ru:
+                            title: ''
+                            url: ''
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'OGT 2020'
+                nesting: null
+                type: url
+                url: /event/ogt-2020-october
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    locale:
+                        ru:
+                            title: ''
+                            url: ''
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'International conference'
+                nesting: null
+                type: url
+                url: /event/international-conference-december
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    locale:
+                        ru:
+                            title: ''
+                            url: ''
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
     -
         title: 'Photo gallery'
         nesting: null

@@ -13,18 +13,7 @@ postPage = "post"
 ==
 <div class="news__row">
     {% for post in news.posts %}
-    <div class="news__column">
-        <div class="image__outer">
-            <img src="{{post.featured_images.first.thumb(100,100)}}" alt="post.featured_images.first.title">
-            <div class="date">
-                {{post.published_at|date('d')}}
-                <br> <span>{{post.published_at|date('M')}}</span>
-            </div>
-        </div>
-        <a class="title" href="{{post.url}}">
-            {{post.title}}
-        </a>
-    </div>
+        {% partial 'news_item' %}
     {% endfor %}
 </div>
 {% if results.hasPages %}

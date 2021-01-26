@@ -81,3 +81,18 @@
 1.4.11:
     - 'Updated table rainlab_blog_sponsors'
     - builder_table_update_rainlab_blog_sponsors_2.php
+1.4.12:
+    - 'Updated table rainlab_blog_categories'
+    - builder_table_update_rainlab_blog_categories_2.php
+1.4.13:
+    - 'Updated table rainlab_blog_categories'
+    - builder_table_update_rainlab_blog_categories_3.php
+1.4.14:
+    - 'Updated table rainlab_blog_categories'
+    - builder_table_update_rainlab_blog_categories_4.php
+1.4.15:
+    - 'Updated table rainlab_blog_categories'
+    - builder_table_update_rainlab_blog_categories_5.php
+1.4.16:
+    - 'Updated table rainlab_blog_categories'
+    - builder_table_update_rainlab_blog_categories_6.php

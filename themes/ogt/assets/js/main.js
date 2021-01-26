@@ -48,7 +48,7 @@ var mobileMenuClose = document.querySelectorAll("mobileMenuClose");
 mobileMenuBtn.onclick = function (e) {
   mobileMenu.classList.toggle("activeMenu");
 };
-// 
+//
 var mobileMenuBtn = document.getElementById("mobileMenuBtn");
 var mobileMenu = document.getElementById("mobileMenu");
 var mobileMenuClose = document.getElementById("mobileMenuClose");
@@ -56,9 +56,6 @@ mobileMenuClose.onclick = function (e) {
   mobileMenu.classList.remove("activeMenu");
 };
 
-function showMore() {
-  document.getElementById("showMoreList").classList.toggle("showMore");
-}
-function showMore2() {
-  document.getElementById("showMoreList2").classList.toggle("showMore");
+function showMore(id) {
+  document.getElementById(id).classList.toggle("showMore");
 }

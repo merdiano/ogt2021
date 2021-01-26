@@ -5,8 +5,9 @@ namespace RainLab\Blog\Components;
 
 
 use Cms\Classes\ComponentBase;
+use Illuminate\Support\Facades\DB;
 use October\Rain\Database\Collection;
-use RainLab\Blog\Models\Category as BlogCategory;
+use RainLab\Blog\Models\Category as Event;
 use RainLab\Blog\Models\Spiker;
 
 class Spikers extends ComponentBase
@@ -18,6 +19,7 @@ class Spikers extends ComponentBase
      */
     public $spikers;
 
+    public $event;
     /**
      * Message to display when there are no messages
      *
@@ -35,7 +37,7 @@ class Spikers extends ComponentBase
 
     public function defineProperties(){
         return [
-            'categoryFilter' => [
+            'event' => [
                 'title'       => 'rainlab.blog::lang.settings.posts_filter',
                 'description' => 'rainlab.blog::lang.settings.posts_filter_description',
                 'type'        => 'string',
@@ -57,43 +59,41 @@ class Spikers extends ComponentBase
         ];
     }
 
-    protected function loadCategory()
+    protected function loadEvent()
     {
-        if (!$slug = $this->property('categoryFilter')) {
-            return null;
+        if (!$slug = $this->property('event')) {
+            return Event::where('type',1)->latest()->first(['id','name']);
         }
 
-        $category = new BlogCategory;
+        $event = new Event;
 
-        $category = $category->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
-            ? $category->transWhere('slug', $slug)
-            : $category->where('slug', $slug);
+        $event = $event->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
+            ? $event->transWhere('slug', $slug)
+            : $event->where('slug', $slug);
 
-        $category = $category->first();
+        $event = $event->first();
 
-        return $category ?: null;
+        return $event ?: null;
     }
 
     public function onRun()
     {
         $this->noRecordsMessage = $this->page['noSpikersMessage'] = $this->property('noSpikersMessage');
 
-        $this->category = $this->page['category'] = $this->loadCategory();
+        $this->event = $this->page['event'] = $this->loadEvent();
 
         $speakerId = $this->property('speakerID');
 
-        $query = new Spiker;
+        $query = Spiker::orderBy('order');
 
-        if($this->category){
-            $query->where('category_id',$this->category->id);
+        if($this->event){;
+            $query->where('category_id','=',$this->event->id);
         }
 
         if($speakerId){
             $query->where('id',$speakerId);
         }
-        $query->orderBy('order');
 
         $this->spikers = $this->page['spikers'] = $query->get();
-
     }
 }

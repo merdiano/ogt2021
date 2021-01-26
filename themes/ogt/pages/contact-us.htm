@@ -73,9 +73,7 @@ function onStart(){
             </div>
         </div>
     </div>
-    <div id="scf-message-contactForm">
 
-    </div>
 
     {% if formSentAlias == contactForm.alias and formError is empty and settingsGet('form_hide_after_success', 0) %}
 
@@ -84,6 +82,9 @@ function onStart(){
     {% else %}
 
     {{ form_open(contactForm.getFormAttributes) }}
+    <div id="scf-message-contactForm" style="margin-bottom: 20px;">
+
+    </div>
 
     {% for field in contactForm.fields %}
 

@@ -113,83 +113,35 @@ code = "main-menu"
 ========================================= -->
 <section class="pop" id="mobileMenu">
     <div class="popClose" id="mobileMenuClose">
-        <img src="assets/images/Close Black.svg" alt="">
+        <img src="{{'assets/images/Close Black.svg'|theme}}" alt="">
     </div>
     <div class="pop__inner">
         <div class="mobile__nav">
-            <a href="#" class="mobile__nav-link" onclick="showMore()">
-                About Conference
-                <div class="icon__outer">
-                    <i class="icon-chevronRight"></i>
+            {% for item in menuItems if not item.viewBag.isHidden %}
+                {% if item.url %}
+                <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="mobile__nav-link {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'child-active' : '' }} {{ item.viewBag.cssClass }}">
+                {{ item.title }}
+                </a>
+                {% endif %}
+
+                {% if item.items %}
+
+                <a href="#" class="mobile__nav-link" onclick="showMore('{{item.code}}')">
+                    {{ item.title }}
+                    <div class="icon__outer">
+                        <i class="icon-chevronRight"></i>
+                    </div>
+                </a>
+                <div class="dropDown" id="{{item.code}}">
+                    {% for menu in item.items %}
+                    <a href="{{ menu.title }}" class="dropDown__link">
+                        {{ menu.title }}
+                    </a>
+                    {% endfor %}
                 </div>
-            </a>
-            <div class="dropDown" id="showMoreList">
-                <a href="aboutConf.html" class="dropDown__link">
-                    About Conference
-                </a>
-                <a href="overview.html" class="dropDown__link">
-                    Market Overview
-                </a>
-                <a href="support.html" class="dropDown__link">
-                    Official Support
-                </a>
-                <a href="speaker.html" class="dropDown__link">
-                    Speakers
-                </a>
-                <a href="#" class="dropDown__link">
-                    Online Conference
-                </a>
-                <a href="portal.html" class="dropDown__link">
-                    Presentation portal
-                </a>
-                <a href="participant.html" class="dropDown__link">
-                    Participating Companies
-                </a>
-                <a href="sponsor.html" class="dropDown__link">
-                    OGT-2020 Sponsors
-                </a>
-                <a href="register.html" class="dropDown__link">
-                    Become a Delegate
-                </a>
-                <a href="#" class="dropDown__link">
-                    Conference Programme
-                </a>
-                <a href="#" class="dropDown__link">
-                    Guide to OGT LIVE
-                </a>
-            </div>
-            <a href="#" class="mobile__nav-link">
-                Next Event
-            </a>
-            <a href="#" class="mobile__nav-link" onclick="showMore2()">
-                Past Event
-                <div class="icon__outer">
-                    <i class="icon-chevronRight"></i>
-                </div>
-            </a>
-            <div class="dropDown" id="showMoreList2">
-                <a href="event.html" class="dropDown__link">
-                    Event 1
-                </a>
-                <a href="#" class="dropDown__link">
-                    Event 2
-                </a>
-                <a href="#" class="dropDown__link">
-                    Event 3
-                </a>
-                <a href="#" class="dropDown__link">
-                    Event 4
-                </a>
-            </div>
-            <a href="gallery.html" class="mobile__nav-link">
-                Photo Gallery
-            </a>
-            <a href="news.html" class="mobile__nav-link">
-                News
-            </a>
-            <a href="contact.html" class="mobile__nav-link">
-                Contact us
-            </a>
+                {% endif %}
+            {% endfor %}
+
         </div>
     </div>
 </section>

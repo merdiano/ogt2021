@@ -2117,6 +2117,9 @@ a.progressive img.reveal {
     width: 100%;
     padding-left: 0;
   }
+    .present__row .present__column {
+        width: calc(50% - 30px);
+    }
 }
 @media (max-width: 840px) {
   .news__row .news__column {
@@ -2473,6 +2476,9 @@ a.progressive img.reveal {
   .speaker__info .general__info .avatar__outer {
     width: 80%;
   }
+    .present__row .present__column {
+        width: calc(100% - 30px);
+    }
 }
 /* for grids */
 @media (max-width: 539px) {
@@ -2600,3 +2606,68 @@ svg #wheel {
     opacity: .7;
 }
 /* news when you in end */
+/* presentation start
+========================================== */
+.plenary {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    padding-left: 10px;
+    position: relative;
+    color: #828282;
+}
+.plenary::before {
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--main__color);
+}
+.present__row {
+    display: flex;
+    align-items: stretch;
+    margin: 0 -15px;
+    flex-wrap: wrap;
+}
+.present__row .present__column {
+    padding: 15px;
+    width: calc(25% - 30px);
+    text-align: center;
+}
+.present__row .present__column .icon__window {
+    border: 1px solid var(--main__color);
+    border-radius: 10px;
+    display: block;
+    height: 208px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.present__row .present__column .name {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color: var(--black);
+    margin: 10px 0;
+}
+.present__row .present__column .download {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--main__color);
+    padding: 14px 20px;
+    display: block;
+    transition: .2s linear;
+    -moz-transition: .2s linear;
+    border-radius: 10px;
+}
+.present__row .present__column .download:hover {
+    transform: scale(.95);
+    opacity: .8;
+}
+/* presentation end
+========================================== */

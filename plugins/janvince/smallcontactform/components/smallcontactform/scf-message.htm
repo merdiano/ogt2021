@@ -7,7 +7,7 @@
 
 		{% flash success %}
 
-			<div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+			<div class="alert alert-{{ type == 'error' ? 'danger' : type }} input__outer">
 				{{ html_entity_decode(message)|nl2br }}
 			</div>
 
@@ -17,7 +17,7 @@
 
 		{% flash error %}
 
-			<div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+			<div class="alert alert-{{ type == 'error' ? 'danger' : type }} input__outer">
 				{{ html_entity_decode(message)|nl2br }}
 			</div>
 

@@ -35,12 +35,19 @@ class OgtEvent extends ComponentBase
                 'default'     => '{{ :slug }}',
                 'type'        => 'string',
             ],
-            'eventPage' => [
-                'title'       => 'rainlab.blog::lang.settings.post_category',
-                'description' => 'rainlab.blog::lang.settings.post_category_description',
+//            'eventPage' => [
+//                'title'       => 'rainlab.blog::lang.settings.post_category',
+//                'description' => 'rainlab.blog::lang.settings.post_category_description',
+//                'type'        => 'dropdown',
+//                'default'     => '',
+//            ],
+            'type' => [
+                'title'       => 'Type',
+                'description' => 'Event type: Active, Past, Next',
                 'type'        => 'dropdown',
-                'default'     => '',
-            ],
+                'default'     => 1,
+            ]
+
         ];
     }
 
@@ -49,8 +56,19 @@ class OgtEvent extends ComponentBase
         return Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
+    public function getTypeOptions(): array
+    {
+        return [
+            'Past event',
+            'Active event',
+            'Next event'
+        ];
+    }
     public function init()
     {
+        $this->eventPage = $this->page['eventPage'] = $this->property('eventPage');
+        $this->event = $this->page['event'] = $this->loadEvent();
+
         Event::listen('translate.localePicker.translateParams', function ($page, $params, $oldLocale, $newLocale) {
             $newParams = $params;
 
@@ -68,8 +86,8 @@ class OgtEvent extends ComponentBase
 
     public function onRun()
     {
-        $this->eventPage = $this->page['eventPage'] = $this->property('eventPage');
-        $this->event = $this->page['event'] = $this->loadEvent();
+
+//        dd($this->event);
         if (!$this->event) {
             $this->setStatusCode(404);
             return $this->controller->run('404');
@@ -79,16 +97,20 @@ class OgtEvent extends ComponentBase
     public function onRender()
     {
         if (empty($this->event)) {
-            $this->event = $this->page['post'] = $this->loadEvent();
+            $this->event = $this->page['event'] = $this->loadEvent();
         }
     }
 
     protected function loadEvent()
     {
-        $slug = $this->property('slug');
+        if (!$slug = $this->property('slug')) {
+            $status = $this->property('type')?:1;
+
+            return OGT_Event::where('type', $status)->latest()->first();
+        }
 
         $event = new OGT_Event;
-        $query = $event->query();
+        $query = $event->query()->with(['spikers','sponsors']);
 
         if ($event->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')) {
             $query->transWhere('slug', $slug);

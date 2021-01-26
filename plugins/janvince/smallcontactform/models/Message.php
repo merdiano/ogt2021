@@ -36,7 +36,7 @@ class Message extends Model
 
     protected $jsonable = ['form_data'];
 
-    
+
     /**
      * Scope new messages only
      */
@@ -167,7 +167,7 @@ class Message extends Model
         $output = [];
         $outputFull = [];
         $formFields = Settings::getTranslated('form_fields');
-
+        $is_register_from = '';
         foreach ($formFields as $field) {
             $fieldValue = null;
 
@@ -182,12 +182,17 @@ class Message extends Model
             }
 
             $output[ $field['name'] ] = $fieldValue;
+
+            if($field['name']==='organization')
+                $is_register_from = '.registration_reply';
+
         }
 
         $output['form_description'] = $formDescription;
         $output['form_alias'] = $formAlias;
 
-        $template = Settings::getTranslatedTemplates('en', App::getLocale(), 'autoreply');
+        $template = $is_register_from ? App::getLocale().$is_register_from : Settings::getTranslatedTemplates('en', App::getLocale(), 'autoreply');
+
 
         if ( Settings::getTranslated('email_template')) {
             if (View::exists(Settings::getTranslated('email_template')) or !empty(MailTemplate::listAllTemplates()[Settings::getTranslated('email_template')])) {
@@ -219,7 +224,7 @@ class Message extends Model
 
             if (!empty($componentProperties['autoreply_subject'])) {
                 $message->subject(Twig::parse($componentProperties['autoreply_subject'], ['fields' => $output]));
-                
+
                 \App::forgetInstance('parse.twig');
                 \App::forgetInstance('twig.environment');
             } elseif (Settings::getTranslated('email_subject')) {
@@ -309,7 +314,7 @@ class Message extends Model
 
         foreach ($sendToAddresses as $sendToAddress) {
             $validator = Validator::make(['email' => trim($sendToAddress)], ['email' => 'required|email']);
-    
+
             if ($validator->fails()) {
                 Log::error('SMALL CONTACT FORM ERROR: Notification email address (' .trim($sendToAddress). ') is invalid! No notification will be delivered!');
             } else {

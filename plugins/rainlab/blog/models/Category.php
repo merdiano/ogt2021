@@ -32,6 +32,7 @@ class Category extends Model
         'name',
         'description',
         'address',
+        'about',
         ['slug', 'index' => true]
     ];
 
@@ -51,12 +52,21 @@ class Category extends Model
         ]
 
     ];
+    public $hasMany = [
+        'spikers' => Spiker::class,
+        'sponsors' => Sponsor::class
+    ];
 
     public $attachOne = [
 //        'banner' => 'System\Models\File',
         'place' => 'System\Models\File',
     ];
 
+    public $statuses = [
+        'Past event',
+        'Active event',
+        'Next event'
+    ];
     public function beforeValidate()
     {
         // Generate a URL slug for this model
@@ -70,24 +80,30 @@ class Category extends Model
         $this->posts()->detach();
     }
 
-    public function getPostCountAttribute()
+    public function getPostCountAttribute(): int
     {
         return optional($this->posts_count->first())->count ?? 0;
     }
 
-    public function getSponsorCountAttribute(){
-
-        return Sponsor::where('category_id',$this->id)->count() ?? 0;
+    public function getSponsorCountAttribute(): int
+    {
+        return Sponsor::where('category_id', $this->id)->count() ?? 0;
     }
 
-    public function getSpikerCountAttribute(){
-        return Spiker::where('category_id',$this->id)->count() ?? 0;
+    public function getSpikerCountAttribute(): int
+    {
+        return Spiker::where('category_id', $this->id)->count() ?? 0;
+    }
+
+    public function getTypeNameAttribute(): string
+    {
+        return $this->statuses[$this->attributes['type']];
     }
     /**
      * Count posts in this and nested categories
      * @return int
      */
-    public function getNestedPostCount()
+    public function getNestedPostCount(): int
     {
         return $this->post_count + $this->children->sum(function ($category) {
             return $category->getNestedPostCount();
@@ -179,7 +195,7 @@ class Category extends Model
     {
         $category = self::getNested();
 
-        $iterator = function($categories) use (&$iterator) {
+        $iterator = function ($categories) use (&$iterator) {
             $result = [];
 
             foreach ($categories as $category) {
@@ -245,11 +261,10 @@ class Category extends Model
 
             if ($item->nesting) {
                 $categories = $category->getNested();
-                $iterator = function($categories) use (&$iterator, &$item, &$theme, $url) {
+                $iterator = function ($categories) use (&$iterator, &$item, &$theme, $url) {
                     $branch = [];
 
                     foreach ($categories as $category) {
-
                         $branchItem = [];
                         $branchItem['url'] = self::getCategoryPageUrl($item->cmsPage, $category, $theme);
                         $branchItem['isActive'] = $branchItem['url'] == $url;
@@ -323,4 +338,12 @@ class Category extends Model
 
         return $url;
     }
+
+//    public function getSpikers(){
+//        return Spiker::where('category_id',$this->id)->get();
+//    }
+//
+//    public function getSponsors(){
+//        return Sponsor::where('category_id',$this->id)->get();
+//    }
 }

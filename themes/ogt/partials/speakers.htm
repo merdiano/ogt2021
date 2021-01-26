@@ -1,0 +1,22 @@
+[viewBag]
+==
+<div class="spiker__grid-blue">
+
+    {% for spiker in spikers%}
+    <div class="spiker__grid-blue-column">
+        <a href="{{'speaker'|page({id:spiker.id})}}">
+            <div class="image__outer">
+                <img src="{{spiker.bg_blue|media}}" alt="{{spiker.name}}">
+            </div>
+            <div class="info">
+                <div class="name">
+                    {{spiker.name}}
+                </div>
+                <div class="position">
+                    {{spiker.title}}
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
