@@ -39,10 +39,12 @@ type = 1
                 <i class="icon-partners"></i>
                 {{'event.sponsors'|_}}
             </button>
-            <a href="#" class="link__btn">
+            {% if event.event_program%}
+            <a href="{{event.event_program.path}}" class="link__btn" download>
                 <i class="icon-clipboard"></i>
                 {{'event.program'|_}}
             </a>
+            {% endif %}
             <button class="tab__btn" data-tab="#locate">
                 <i class="icon-locationC"></i>
                 {{'event.venue'|_}}

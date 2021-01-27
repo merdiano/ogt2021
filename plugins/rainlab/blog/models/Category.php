@@ -58,7 +58,7 @@ class Category extends Model
     ];
 
     public $attachOne = [
-//        'banner' => 'System\Models\File',
+        'event_program' => 'System\Models\File',
         'place' => 'System\Models\File',
     ];
 

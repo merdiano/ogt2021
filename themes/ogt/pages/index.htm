@@ -61,12 +61,14 @@ function onInit(){
                 <a href="{{'registration'|page}}" class="hero__btn">
                     {{'home.register'|_}}
                 </a>
-                <a href="#" class="hero__btn">
+                <a href="{{'online-conference'|staticPage}}" class="hero__btn">
                     {{'home.online_conference'|_}}
                 </a>
-                <a href="#" class="hero__btn">
+                {% if event.event_program %}
+                <a href="{{event.event_program.path}}" class="hero__btn" download>
                     {{'event.program'|_}}
                 </a>
+                {% endif %}
             </div>
 
         </div>
