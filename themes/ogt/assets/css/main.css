@@ -1165,7 +1165,8 @@ a.progressive img.reveal {
   margin: 0 -10px;
 }
 .spiker__grid-blue-column {
-  padding: 10px;
+  margin: 10px;
+    border: 1px solid var(--grey);
 }
 .spiker__grid-blue-column .image__outer {
   width: 100%;
@@ -1180,7 +1181,7 @@ a.progressive img.reveal {
 .spiker__grid-blue-column .info {
   background: #fff;
   padding: 30px 20px;
-  border: 1px solid var(--grey);
+
   display: block;
   transition: 0.2s linear;
   -moz-transition: 0.2s linear;

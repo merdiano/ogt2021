@@ -52,22 +52,22 @@ code = "main-menu"
             <div class="logoRow__inner-column">
                 {% if this.theme.logo1 %}
                 <div class="logo__outer">
-                    <a href="/"><img src="{{this.theme.logo1.path}}" alt="{{this.theme.logo1.title}}"></a>
+                    <a href="/"><img src="{{this.theme.logo1.path|resize(158,48,{mode:'portrait'})}}" alt="{{this.theme.logo1.title}}"></a>
                 </div>
                 {% endif %}
                 {% if this.theme.logo2 %}
                 <div class="logo__outer">
-                    <img src="{{this.theme.logo2.path}}" alt="{{this.theme.logo2.title}}">
+                    <img src="{{this.theme.logo2.path|resize(158,48,{mode:'portrait'})}}" alt="{{this.theme.logo2.title}}">
                 </div>
                 {% endif %}
                 {% if this.theme.logo3 %}
                 <div class="logo__outer">
-                    <img src="{{this.theme.logo3.path}}" alt="{{this.theme.logo3.title}}">
+                    <img src="{{this.theme.logo3.path|resize(158,48,{mode:'portrait'})}}" alt="{{this.theme.logo3.title}}">
                 </div>
                 {% endif %}
                 {% if this.theme.logo4 %}
                 <div class="logo__outer">
-                    <img src="{{this.theme.logo4.path}}" alt="{{this.theme.logo4.title}}">
+                    <img src="{{this.theme.logo4.path|resize(158,48,{mode:'portrait'})}}" alt="{{this.theme.logo4.title}}">
                 </div>
                 {% endif %}
             </div>
@@ -87,7 +87,7 @@ code = "main-menu"
     <div class="mobileHeader__inner">
         <div class="mobileLogo__row">
             <div class="mobileLogo">
-                <img src="{{this.theme.logo1.path}}" alt="ogt-logo">
+                <img src="{{this.theme.logo1.path|resize(158,48,{mode:'portrait'})}}" alt="ogt-logo">
             </div>
         </div>
         <div class="mobileBtns">
