@@ -25,43 +25,39 @@ type = 1
 </div>
 {% endput %}
 <section class="eventTab">
-    <div class="auto__container">
-        <div class="eventTab__inner">
-            <button class="tab__btn active" data-tab="#conf">
-                <i class="icon-file"></i>
-                {{'event.about'|_}}
-            </button>
-            <button class="tab__btn" data-tab="#speaker">
-                <i class="icon-conference"></i>
-                {{'event.speakers'|_}}
-            </button>
-            <button class="tab__btn" data-tab="#partner">
-                <i class="icon-partners"></i>
-                {{'event.sponsors'|_}}
-            </button>
-            {% if event.event_program%}
-            <a href="{{event.event_program.path}}" class="link__btn" download>
-                <i class="icon-clipboard"></i>
-                {{'event.program'|_}}
-            </a>
-            {% endif %}
-            <button class="tab__btn" data-tab="#locate">
-                <i class="icon-locationC"></i>
-                {{'event.venue'|_}}
-            </button>
-        </div>
+    <div class="eventTab__inner">
+        <button class="tab__btn active" data-tab="#conf">
+            <i class="icon-file"></i>
+            {{'event.about'|_}}
+        </button>
+        <button class="tab__btn" data-tab="#speaker">
+            <i class="icon-conference"></i>
+            {{'event.speakers'|_}}
+        </button>
+        <button class="tab__btn" data-tab="#partner">
+            <i class="icon-partners"></i>
+            {{'event.sponsors'|_}}
+        </button>
+        {% if event.event_program%}
+        <a href="{{event.event_program.path}}" class="link__btn" download>
+            <i class="icon-clipboard"></i>
+            {{'event.program'|_}}
+        </a>
+        {% endif %}
+        <button class="tab__btn" data-tab="#locate">
+            <i class="icon-locationC"></i>
+            {{'event.venue'|_}}
+        </button>
     </div>
 </section>
 <!-- conf start
 ========================================== -->
 <section class="conf event active" id="conf">
-    <div class="auto__container">
-        <div class="conf__inner">
-            <div class="title">
-                {{'event.about_conference'|_}}
-            </div>
-            {{event.about|raw}}
+    <div class="conf__inner">
+        <div class="title">
+            {{'event.about_conference'|_}}
         </div>
+        {{event.about|raw}}
     </div>
 </section>
 <!-- conf start
@@ -69,10 +65,8 @@ type = 1
 <!-- spiker start
 ========================================== -->
 <section class="spiker event" id="speaker">
-    <div class="auto__container">
-        <div class="spiker__inner">
-            {% partial 'speakers' spikers = event.spikers %}
-        </div>
+    <div class="spiker__inner">
+        {% partial 'speakers' spikers = event.spikers %}
     </div>
 </section>
 <!-- spiker end
@@ -87,13 +81,11 @@ type = 1
 <!-- locate start
 ========================================== -->
 <section class="locate event" id="locate">
-    <div class="auto__container">
-        <div class="locate__inner">
-            <div class="locate__row">
-                {% partial 'venue' %}
-                <div class="locate__image">
-                    <img src="{{event.place.path}}" alt="{{event.place.title}}">
-                </div>
+    <div class="locate__inner">
+        <div class="locate__row">
+            {% partial 'venue' %}
+            <div class="locate__image">
+                <img src="{{event.place.path}}" alt="{{event.place.title}}">
             </div>
         </div>
     </div>
