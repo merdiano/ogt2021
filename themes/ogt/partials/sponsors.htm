@@ -1,112 +1,109 @@
 [viewBag]
 ==
-<div class="auto__container">
-    <div class="partner__inner">
-        {% set official = sponsors.where('type',1) %}
-        {% if official.count>0 %}
-        <div class="title">
-            {{'Official partner'|_}}
-        </div>
-        <div class="partner__row">
-            {% for partner in official %}
-            <a href="{{partner.site}}" class="image__outer">
-                <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% set media = sponsors.where('type',2) %}
-        {% if media.count>0 %}
-        <div class="title">
-            {{'Media partner'|_}}
-        </div>
-        <div class="partner__row">
-            {% for partner in media %}
-            <a href="{{partner.site}}" class="image__outer">
-                <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% set premier = sponsors.where('type',3) %}
-        {% if premier.count>0 %}
-        <div class="title">
-            {{'Premier partner'|_}}
-        </div>
-        <div class="partner__row">
-            {% for partner in premier %}
-            <a href="{{partner.site}}" class="image__outer">
-                <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% set event = sponsors.where('type',4) %}
-        {% if event.count>0 %}
-        <div class="title">
-            {{'Event sponsors'|_}}
-        </div>
-        <div class="partner__row">
-            {% for partner in event %}
-            <a href="{{partner.site}}" class="image__outer">
-                <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% set platinum = sponsors.where('type',5) %}
-        {% if platinum.count>0 %}
-        <div class="title">
-            {{'Platinum sponsors'|_}}
-        </div>
-        <div class="partner__row">
-            {% for partner in platinum %}
-            <a href="{{partner.site}}" class="image__outer">
-                <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
-
-        {% set golden = sponsors.where('type',6) %}
-        {% if golden.count>0 %}
-        <div class="title">
-            {{'Golden sponsors'|_}}
-        </div>
-        <div class="partner__row">
-            {% for partner in golden %}
-            <a href="{{partner.site}}" class="image__outer">
-                <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% set silver = sponsors.where('type',7) %}
-        {% if silver.count>0 %}
-        <div class="title">
-            {{'Silver sponsors'|_}}
-        </div>
-        <div class="partner__row">
-            {% for partner in silver %}
-            <a href="{{partner.site}}" class="image__outer">
-                <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% set bronze = sponsors.where('type',8) %}
-        {% if bronze.count>0 %}
-        <div class="title">
-            {{'Bronze sponsors'|_}}
-        </div>
-        <div class="partner__row">
-            {% for partner in bronze %}
-            <a href="{{partner.site}}" class="image__outer">
-                <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
+<div class="partner__inner">
+    {% set official = sponsors.where('type',1) %}
+    {% if official.count>0 %}
+    <div class="title">
+        {{'sponsor.official'|_}}
     </div>
+    <div class="partner__row">
+        {% for partner in official %}
+        <a href="{{partner.site}}" class="image__outer">
+            <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% set media = sponsors.where('type',2) %}
+    {% if media.count>0 %}
+    <div class="title">
+        {{'sponsor.media'|_}}
+    </div>
+    <div class="partner__row">
+        {% for partner in media %}
+        <a href="{{partner.site}}" class="image__outer">
+            <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% set premier = sponsors.where('type',3) %}
+    {% if premier.count>0 %}
+    <div class="title">
+        {{'sponsor.premier'|_}}
+    </div>
+    <div class="partner__row">
+        {% for partner in premier %}
+        <a href="{{partner.site}}" class="image__outer">
+            <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% set event = sponsors.where('type',4) %}
+    {% if event.count>0 %}
+    <div class="title">
+        {{'sponsor.event'|_}}
+    </div>
+    <div class="partner__row">
+        {% for partner in event %}
+        <a href="{{partner.site}}" class="image__outer">
+            <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% set platinum = sponsors.where('type',5) %}
+    {% if platinum.count>0 %}
+    <div class="title">
+        {{'sponsor.platinum'|_}}
+    </div>
+    <div class="partner__row">
+        {% for partner in platinum %}
+        <a href="{{partner.site}}" class="image__outer">
+            <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
 
+    {% set golden = sponsors.where('type',6) %}
+    {% if golden.count>0 %}
+    <div class="title">
+        {{'sponsor.golden'|_}}
+    </div>
+    <div class="partner__row">
+        {% for partner in golden %}
+        <a href="{{partner.site}}" class="image__outer">
+            <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% set silver = sponsors.where('type',7) %}
+    {% if silver.count>0 %}
+    <div class="title">
+        {{'sponsor.silver'|_}}
+    </div>
+    <div class="partner__row">
+        {% for partner in silver %}
+        <a href="{{partner.site}}" class="image__outer">
+            <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% set bronze = sponsors.where('type',8) %}
+    {% if bronze.count>0 %}
+    <div class="title">
+        {{'sponsor.bronze'|_}}
+    </div>
+    <div class="partner__row">
+        {% for partner in bronze %}
+        <a href="{{partner.site}}" class="image__outer">
+            <img src="{{partner.logo|media}}" alt="{{partner.organization}}">
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
