@@ -18,7 +18,7 @@ noSpikersMessage = "No sponsors found"
                 {{adam.name}}
             </div>
             <div class="prof">
-                {{adam.title}}
+                {{adam.title|raw}}
             </div>
             <div class="icon__row">
                 <div class="icon__outer">
@@ -41,9 +41,11 @@ noSpikersMessage = "No sponsors found"
             <div class="sessionText">
                 {{adam.date|date('jS F')}}
             </div>
+            {% if adam.date and adam.time%}
             <div class="sessionText">
                 <strong>{{'speaker.time'|_}}</strong> {{adam.date|date('G:i')}} - {{adam.date|date_modify('+' ~ adam.time ~ ' minute')|date('G:i')}}
             </div>
+            {% endif %}
             <div class="sessionText">
                 <strong>{{'speaker.topic'|_}}</strong> {{adam.topic}}
             </div>

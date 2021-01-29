@@ -82,18 +82,20 @@ class Spikers extends ComponentBase
 
         $this->event = $this->page['event'] = $this->loadEvent();
 
-        $speakerId = $this->property('speakerID');
+        $speakerId = $this->property('speakerId');
 
-        $query = Spiker::orderBy('order');
-
-        if($this->event){;
-            $query->where('category_id','=',$this->event->id);
-        }
+        $query = Spiker::query();
 
         if($speakerId){
             $query->where('id',$speakerId);
         }
+        else if($this->event){;
+            $query->where('category_id','=',$this->event->id);
+        }
+
+        $query->orderBy('order');
 
         $this->spikers = $this->page['spikers'] = $query->get();
+
     }
 }
