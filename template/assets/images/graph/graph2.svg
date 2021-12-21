@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="361" height="367" viewBox="0 0 361 367">
+  <g id="Group_94" data-name="Group 94" transform="translate(-1359 -3012)">
+    <text id="_17_" data-name="17%" transform="translate(1395 3286)" fill="#1c1d1f" font-size="14" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-26.4" y="0">17%</tspan></text>
+    <text id="_4_" data-name="4%" transform="translate(1499 3032)" fill="#1c1d1f" font-size="14" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-18.368" y="0">4%</tspan></text>
+    <text id="_7_" data-name="7%" transform="translate(1443 3057)" fill="#1c1d1f" font-size="14" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-18.368" y="0">7%</tspan></text>
+    <text id="_11_" data-name="11%" transform="translate(1386 3137)" fill="#1c1d1f" font-size="14" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-26.4" y="0">11%</tspan></text>
+    <text id="_3_" data-name="3%" transform="translate(1537 3027)" fill="#1c1d1f" font-size="14" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-18.368" y="0">3%</tspan></text>
+    <g id="Ring_Chart4" data-name="Ring Chart4" transform="translate(-20 -524)">
+      <path id="Path_2270" data-name="Path 2270" d="M0-157A157,157,0,0,1,143.36-64.006a157,157,0,0,1-26.469,168.818l-23.08-20.7A126,126,0,0,0,115.054-51.368,126,126,0,0,0,0-126Z" transform="translate(1563 3723)" fill="#005187"/>
+      <path id="Path_2271" data-name="Path 2271" d="M116.891,104.811A157,157,0,0,1-79.2,135.557l15.639-26.766A126,126,0,0,0,93.811,84.116Z" transform="translate(1563 3723)" fill="#3a9ddf"/>
+      <path id="Path_2272" data-name="Path 2272" d="M-79.2,135.557a157,157,0,0,1-77.777-138l31,.482a126,126,0,0,0,62.42,110.751Z" transform="translate(1563 3723)" fill="#73bcee"/>
+      <path id="Path_2273" data-name="Path 2273" d="M-156.981-2.442a157,157,0,0,1,36.887-98.684l23.713,19.967a126,126,0,0,0-29.6,79.2Z" transform="translate(1563 3723)" fill="#65e8df"/>
+      <path id="Path_2274" data-name="Path 2274" d="M-120.094-101.125a157,157,0,0,1,53.866-41.222l13.077,28.107a126,126,0,0,0-43.23,33.083Z" transform="translate(1563 3723)" fill="#f8fb99"/>
+      <path id="Path_2275" data-name="Path 2275" d="M-66.228-142.348a157,157,0,0,1,37.1-11.926l5.752,30.462a126,126,0,0,0-29.772,9.571Z" transform="translate(1563 3723)" fill="#f1ad48"/>
+      <path id="Path_2276" data-name="Path 2276" d="M-29.131-154.274A157,157,0,0,1,0-157v31a126,126,0,0,0-23.379,2.188Z" transform="translate(1563 3723)" fill="red"/>
+    </g>
+    <text id="_37_" data-name="37%" transform="translate(1720 3128)" fill="#1c1d1f" font-size="14" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-26.4" y="0">37%</tspan></text>
+    <text id="_22_" data-name="22%" transform="translate(1586 3375)" fill="#1c1d1f" font-size="14" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-26.4" y="0">22%</tspan></text>
+  </g>
+</svg>

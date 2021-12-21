@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <g id="Group_85" data-name="Group 85" transform="translate(-900 -966)">
+    <rect id="NoPath_копия_39_" data-name="NoPath — копия (39)" width="120" height="120" transform="translate(900 966)" fill="#fff"/>
+    <g id="desk" transform="translate(900 966)">
+      <g id="Group_21" data-name="Group 21">
+        <path id="Path_2196" data-name="Path 2196" d="M14.3,109.453h7.031V120H14.3Z" fill="#efe2dd"/>
+      </g>
+      <g id="Group_24" data-name="Group 24">
+        <g id="Group_23" data-name="Group 23">
+          <g id="Group_22" data-name="Group 22">
+            <path id="Path_2197" data-name="Path 2197" d="M98.672,109.453H105.7V120H98.672Z" fill="#e1d3ce"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_28" data-name="Group 28">
+        <g id="Group_27" data-name="Group 27">
+          <g id="Group_26" data-name="Group 26">
+            <g id="Group_25" data-name="Group 25">
+              <path id="Path_2198" data-name="Path 2198" d="M49.453,63.516H28.359V42.422H49.453Z" fill="#efe2dd"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <path id="Path_2199" data-name="Path 2199" d="M38.906,42.422H49.453V63.516H38.906Z" fill="#e1d3ce"/>
+      <g id="Group_29" data-name="Group 29">
+        <path id="Path_2200" data-name="Path 2200" d="M70.547,49.453H7.266V0H70.547Z" fill="#5c6366"/>
+      </g>
+      <path id="Path_2201" data-name="Path 2201" d="M38.906,0H70.547V49.453H38.906Z" fill="#41474d"/>
+      <g id="Group_30" data-name="Group 30">
+        <path id="Path_2202" data-name="Path 2202" d="M112.734,112.969H7.266V60H112.734Z" fill="#fed843"/>
+      </g>
+      <g id="Group_32" data-name="Group 32">
+        <g id="Group_31" data-name="Group 31">
+          <path id="Path_2203" data-name="Path 2203" d="M112.734,42.422,98.672,47.344,84.609,42.422a7.031,7.031,0,0,1,0-14.062h28.125Z" fill="#57d9ad"/>
+        </g>
+      </g>
+      <path id="Path_2204" data-name="Path 2204" d="M112.734,56.484,96.8,60.7,84.609,56.484a7.031,7.031,0,0,1,0-14.062h28.125Z" fill="#f03800"/>
+      <path id="Path_2205" data-name="Path 2205" d="M60,60h52.734v52.969H60Z" fill="#fabe2c"/>
+      <g id="Desk_2_">
+        <g id="Group_33" data-name="Group 33">
+          <path id="Path_2206" data-name="Path 2206" d="M35.391,21.328h7.031v7.031H35.391Z" fill="#fff5f5"/>
+        </g>
+      </g>
+      <path id="Path_2207" data-name="Path 2207" d="M38.906,21.328h3.516v7.031H38.906Z" fill="#efe2dd"/>
+      <path id="Path_2208" data-name="Path 2208" d="M0,56.484H120v7.031H0Z" fill="#fabe2c"/>
+      <path id="Path_2209" data-name="Path 2209" d="M60,56.484h60v7.031H60Z" fill="#ff9100"/>
+    </g>
+  </g>
+</svg>
